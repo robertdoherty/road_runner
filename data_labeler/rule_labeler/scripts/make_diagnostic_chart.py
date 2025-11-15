@@ -109,7 +109,12 @@ def update_system_types(diagnostic_chart: dict) -> None:
         "by_diagnostic_id": by_diag,
     }
 
-    system_types_path = script_dir / "system_types.json"
+    # Write system_types.json into the shared meta folder so all agents use
+    # the same canonical location:
+    #   data_labeler/rule_labeler/meta/system_types.json
+    meta_dir = project_root / "data_labeler" / "rule_labeler" / "meta"
+    meta_dir.mkdir(parents=True, exist_ok=True)
+    system_types_path = meta_dir / "system_types.json"
     with open(system_types_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 

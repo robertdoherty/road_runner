@@ -32,7 +32,7 @@ def _load_system_types() -> dict:
         _repo_root(),
         "data_labeler",
         "rule_labeler",
-        "scripts",
+        "meta",
         "system_types.json",
     )
     try:
