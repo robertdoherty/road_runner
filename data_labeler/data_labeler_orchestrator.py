@@ -404,6 +404,12 @@ def _augment_with_diagnostics(
 
         if llm_payload is not None and not preds:
             llm_payload.setdefault("predictions", [])  # type: ignore[union-attr]
+            logger.info(
+                "LLM diagnostics returned no predictions for post_id=%s (need_llm=%s, error=%s)",
+                post_id,
+                entry["need_llm"],
+                llm_payload.get("error") if isinstance(llm_payload, dict) else None,
+            )
 
         if preds:
             top = preds[0]
@@ -412,6 +418,16 @@ def _augment_with_diagnostics(
                 # Clamp LLM confidence to the rule floor (e.g., 0.6) upper bound
                 llm_conf_raw = _extract_prediction_conf(top)
                 llm_conf = min(rule_floor_conf, _clamp_conf(llm_conf_raw))
+                logger.info(
+                    "LLM diagnostics eval post_id=%s rule=%s@%.2f llm=%s raw=%.2f capped=%.2f floor=%.2f",
+                    post_id,
+                    entry["rule_label"],
+                    _clamp_conf(entry["rule_conf"]),
+                    maybe_label,
+                    llm_conf_raw,
+                    llm_conf,
+                    rule_floor_conf,
+                )
                 conflict_entry = (
                     {
                         "source": "rules_vs_llm",
@@ -434,10 +450,26 @@ def _augment_with_diagnostics(
                     final_conf = llm_conf
                     final_provenance = llm_payload.get("provenance", "llm_v1")
                     stats["llm_succeeded"] += 1
+                    logger.info(
+                        "LLM diagnostics override for post_id=%s (%s@%.2f -> %s@%.2f)",
+                        post_id,
+                        entry["rule_label"],
+                        _clamp_conf(entry["rule_conf"]),
+                        maybe_label,
+                        llm_conf,
+                    )
                     if conflict_entry is not None:
                         conflict_entry["chosen"] = "llm"
                 elif conflict_entry is not None:
                     conflict_entry["chosen"] = "rules"
+                    logger.info(
+                        "LLM diagnostics kept rule label for post_id=%s (rule=%s@%.2f >= llm=%s@%.2f)",
+                        post_id,
+                        entry["rule_label"],
+                        _clamp_conf(entry["rule_conf"]),
+                        maybe_label,
+                        llm_conf,
+                    )
 
         if conflict_entry is not None:
             error_report.setdefault("conflicts", []).append(conflict_entry)
