@@ -12,8 +12,8 @@ import os
 import sys
 from typing import Any, Dict, List, Optional, Sequence
 
-from .schema import DiagnosticInput, DiagnosticOutput, enforce_allowed_predictions
-from .chains import (
+from .diagnostic_schema import DiagnosticInput, DiagnosticOutput, enforce_allowed_predictions
+from .diagnostic_chains import (
     build_diagnostic_labeler_chain,
     render_allowed_labels,
     render_examples_block,

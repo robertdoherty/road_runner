@@ -13,6 +13,11 @@ import logging
 current_dir = os.path.dirname(os.path.abspath(__file__))
 if current_dir not in sys.path:
     sys.path.insert(0, current_dir)
+repo_root = os.path.dirname(current_dir)
+if repo_root and repo_root not in sys.path:
+    sys.path.insert(0, repo_root)
+logger = logging.getLogger(__name__)
+
 data_agent_dir = os.path.join(current_dir, "data_labeler_agent")
 if data_agent_dir not in sys.path:
     sys.path.insert(0, data_agent_dir)
@@ -48,19 +53,25 @@ except Exception:
     DEFAULT_DIAGNOSTIC_MAX_CONCURRENCY = 3
 
 try:
-    from data_labeler_agent.diagnostic_agent.agent import (
+    from data_labeler_agent.diagnostic_agent.diagnostic_agent import (
         predict_diagnostics,
         predict_diagnostics_batch,
     )
 except ImportError:
     try:
-        from diagnostic_agent.agent import (
+        from data_labeler.diagnostic_agent.diagnostic_agent import (
             predict_diagnostics,
             predict_diagnostics_batch,
         )
     except ImportError:
-        predict_diagnostics = None  # type: ignore
-        predict_diagnostics_batch = None  # type: ignore
+        try:
+            from diagnostic_agent.diagnostic_agent import (
+                predict_diagnostics,
+                predict_diagnostics_batch,
+            )
+        except ImportError:
+            predict_diagnostics = None  # type: ignore
+            predict_diagnostics_batch = None  # type: ignore
 
 
 def _load_json(path: str) -> Dict[str, Any]:
@@ -173,7 +184,11 @@ def _compute_rule_conf_floor(rules: Dict[str, Any], default_floor: float = 0.6) 
                     floor = min(floor, 1.0)
         if not found_any:
             return float(default_floor)
-        return max(0.0, min(1.0, float(floor)))
+        floor = max(0.0, min(1.0, float(floor)))
+        # Never let the LLM cap fall below the configured default floor—older rule
+        # sets can include very low scores (e.g., 0.2) which would otherwise
+        # suppress LLM results entirely.
+        return max(float(default_floor), floor)
     except Exception:
         return float(default_floor)
 

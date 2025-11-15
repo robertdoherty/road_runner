@@ -138,7 +138,7 @@ Validation:
     (
         "human",
         """
-ALLOWED LABELS
+ALLOWED LABELS (you MUST choose only from this list; if none fit, use dx.other_or_unclear)
 {labels_block}
 
 FEW-SHOT EXAMPLES (per label, up to 3)
