@@ -105,9 +105,6 @@ Glossary:
 - brand: manufacturer token as written (Carrier, Trane, Goodman)
 - model_text: verbatim model strings from text (no normalization)
 - model_family_id: normalized brand+series (optional year bucket) ONLY if confident (e.g., carrier.48tc.2015_2022); else ""
-- indoor_model_id / outdoor_model_id: for split/mini-split/heat-pump systems (verbatim IDs). For RTUs/furnaces, leave "".
-- model_resolution_confidence: overall confidence in the model identification (0.0-1.0)
-- has_images: true if the post contains or explicitly references images
 
 Type rules (CRITICAL - must follow exactly):
 - Confidences are floats 0.0-1.0 (NOT strings, NOT null).
@@ -141,13 +138,7 @@ Output (one object per input post):
         "model_text": "",
         "model_text_confidence": 0.0,
         "model_family_id": "",
-        "model_family_id_confidence": 0.0,
-        "indoor_model_id": "",
-        "indoor_model_id_confidence": 0.0,
-        "outdoor_model_id": "",
-        "outdoor_model_id_confidence": 0.0,
-        "model_resolution_confidence": 0.0,
-        "has_images": false
+        "model_family_id_confidence": 0.0
       }}
     }}
   ]

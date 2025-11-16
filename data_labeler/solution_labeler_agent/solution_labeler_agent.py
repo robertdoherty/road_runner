@@ -207,8 +207,6 @@ def _merge_system_info_delta(labels: Dict[str, Any], delta: Dict[str, Any]) -> N
         "brand",
         "model_text",
         "model_family_id",
-        "indoor_model_id",
-        "outdoor_model_id",
     ]
 
     for field in string_fields:
@@ -232,18 +230,6 @@ def _merge_system_info_delta(labels: Dict[str, Any], delta: Dict[str, Any]) -> N
             si[field] = new_val
             _record_provenance(labels, field, provenance)
             _append_evidence(labels, field, evidence_by.get(field) or [])
-
-    # Model resolution confidence: take max
-    try:
-        new_conf = float(delta.get("model_resolution_confidence", 0.0) or 0.0)
-    except Exception:
-        new_conf = 0.0
-    try:
-        base_conf = float(si.get("model_resolution_confidence", 0.0) or 0.0)
-    except Exception:
-        base_conf = 0.0
-    si["model_resolution_confidence"] = max(base_conf, new_conf)
-
 
 def _merge_enrichment_into_labels(labels: Dict[str, Any], enrichment: Dict[str, Any]) -> Dict[str, Any]:
     labels = _ensure_nested(labels)

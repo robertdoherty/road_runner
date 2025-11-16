@@ -50,12 +50,6 @@ class SystemInfo(BaseModel):
     model_text_confidence: confloat(ge=0.0, le=1.0) = 0.0
     model_family_id: str = ""
     model_family_id_confidence: confloat(ge=0.0, le=1.0) = 0.0
-    indoor_model_id: str = ""
-    indoor_model_id_confidence: confloat(ge=0.0, le=1.0) = 0.0
-    outdoor_model_id: str = ""
-    outdoor_model_id_confidence: confloat(ge=0.0, le=1.0) = 0.0
-    model_resolution_confidence: confloat(ge=0.0, le=1.0) = 0.0
-    has_images: bool = False
 
     @validator("system_type", pre=True, always=True)
     def _validate_system_type(cls, value: str) -> str:  # type: ignore[override]

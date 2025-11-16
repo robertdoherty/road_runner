@@ -145,9 +145,6 @@ OUTPUT (STRICT JSON, no extra text)
       "brand": "string",
       "model_text": "string",
       "model_family_id": "string",
-      "indoor_model_id": "string",
-      "outdoor_model_id": "string",
-      "model_resolution_confidence": 0.0,
       "evidence_refs_by_field": {{ "system_type": ["id"], "brand": ["id"], "model_text": ["id"] }},
       "provenance_by_field": {{ "system_type": "op_comment|op_edit|commenter", "brand": "op_comment|op_edit|commenter", "model_text": "op_comment|op_edit|commenter" }},
       "field_confidence_by_field": {{ "system_type": 0.0, "brand": 0.0, "model_text": 0.0 }}
