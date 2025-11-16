@@ -1,20 +1,22 @@
 ## Script to pull latest diagnostic chart
 
 import sys
-import os
 from pathlib import Path
+from typing import Dict, List, Set
+import json
 
 # Add project root to Python path
 script_dir = Path(__file__).resolve().parent
 project_root = script_dir.parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from config import GOLDEN_DIAGNOSTIC_CHART_PATH
-import json
+from config import GOLDEN_DIAGNOSTIC_CHART_PATH  # noqa: E402
+from data_labeler.rule_labeler.scripts.make_error_prediction import normalize  # noqa: E402
 
 # Paths to meta files
 DIAGNOSTICS_META_PATH = project_root / "data_labeler/rule_labeler/meta/diagnostics_v1.json"
 RULES_META_PATH = project_root / "data_labeler/rule_labeler/meta/rules_v1.json"
+NORMALIZER_CONFIG_PATH = project_root / "data_labeler/rule_labeler/scripts/make_error_prediction_config.json"
 
 def get_golden_diagnostic_chart(path: str) -> dict:
     with open(path, 'r') as f:
@@ -22,53 +24,131 @@ def get_golden_diagnostic_chart(path: str) -> dict:
     return data
 
 def update_diagnostics_meta(diagnostic_chart: dict) -> None:
-    """Update diagnostics_v1.json with the latest diagnostic IDs from golden set."""
-    # Read current diagnostics_v1.json
-    with open(DIAGNOSTICS_META_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    
-    # Update the labels field
-    data["labels"] = [item["diagnostic_id"] for item in diagnostic_chart.get("diagnostics", [])]
-    
-    # Write back to file
+    """Update diagnostics_v1.json with the latest diagnostic IDs and metadata from golden set."""
+    # Read current diagnostics_v1.json (create base structure if missing)
+    if DIAGNOSTICS_META_PATH.exists():
+        with open(DIAGNOSTICS_META_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    else:
+        data = {"version": 1}
+
+    diagnostics = diagnostic_chart.get("diagnostics", []) or []
+
+    labels: List[str] = []
+    label_details: Dict[str, Dict[str, str]] = {}
+    for diag in diagnostics:
+        diag_id = diag.get("diagnostic_id")
+        if not diag_id:
+            continue
+        labels.append(diag_id)
+        label_details[diag_id] = {
+            "description": diag.get("description")
+            or diag.get("specific_diagnostic_name")
+            or "",
+            "typical_effect_on_operation": diag.get("typical_effect_on_operation", ""),
+        }
+
+    data["labels"] = labels
+    data["label_details"] = label_details
+
     with open(DIAGNOSTICS_META_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
-    print(f"✅ Updated {DIAGNOSTICS_META_PATH} with {len(data['labels'])} diagnostic labels")
+    print(
+        f"✅ Updated {DIAGNOSTICS_META_PATH} with {len(labels)} diagnostic labels "
+        "and descriptions"
+    )
+
+
+def _load_normalizer_cfg() -> dict:
+    with open(NORMALIZER_CONFIG_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _add_phrase(
+    diag_id: str,
+    phrase: str,
+    norm_cfg: dict,
+    phrases_by_diag: Dict[str, List[str]],
+    seen_by_diag: Dict[str, Set[str]],
+) -> None:
+    if not phrase:
+        return
+    normalized, _ = normalize(str(phrase), norm_cfg)
+    normalized = normalized.strip()
+    if not normalized:
+        return
+    seen = seen_by_diag.setdefault(diag_id, set())
+    if normalized in seen:
+        return
+    seen.add(normalized)
+    phrases_by_diag.setdefault(diag_id, []).append(normalized)
 
 
 def update_rules_meta(diagnostic_chart: dict) -> None:
-    """Regenerate rules_v1.json from the golden diagnostic chart.
-
-    For each symptom_mappings entry, create a simple rule:
-    - label: diagnostic_id
-    - any: [loose_symptom_example, canonical_symptom]
-    - all: []
-    - score: likelihood_relative
-    """
+    """Regenerate rules_v1.json from the golden diagnostic chart with normalized phrases."""
     diagnostics_by_id = {
         d["diagnostic_id"]: d for d in diagnostic_chart.get("diagnostics", [])
     }
+    norm_cfg = _load_normalizer_cfg()
 
-    rules: list[dict] = []
+    phrases_by_diag: Dict[str, List[str]] = {}
+    seen_by_diag: Dict[str, Set[str]] = {}
+    scores_by_diag: Dict[str, List[float]] = {}
+    mapping_ids_by_diag: Dict[str, List[str]] = {}
+
+    def ensure_diag(diag_id: str) -> None:
+        phrases_by_diag.setdefault(diag_id, [])
+        seen_by_diag.setdefault(diag_id, set())
+        scores_by_diag.setdefault(diag_id, [])
+        mapping_ids_by_diag.setdefault(diag_id, [])
+
+    # Start with loose + canonical symptom mappings
     for mapping in diagnostic_chart.get("symptom_mappings", []):
         diag_id = mapping["diagnostic_id"]
+        ensure_diag(diag_id)
+        mapping_ids_by_diag[diag_id].append(mapping.get("mapping_id", ""))
+        scores_by_diag[diag_id].append(float(mapping.get("likelihood_relative", 0.0)))
+        _add_phrase(diag_id, mapping.get("loose_symptom_example"), norm_cfg, phrases_by_diag, seen_by_diag)
+        _add_phrase(diag_id, mapping.get("canonical_symptom"), norm_cfg, phrases_by_diag, seen_by_diag)
+
+    # Enrich with additional diagnostic fields
+    extra_fields = (
+        "canonical_symptoms",
+        "common_root_causes",
+        "technician_observation_phrases",
+        "technician_observation_codes",
+    )
+    for diag_id, diag in diagnostics_by_id.items():
+        ensure_diag(diag_id)
+        for field in extra_fields:
+            for phrase in diag.get(field, []) or []:
+                _add_phrase(diag_id, phrase, norm_cfg, phrases_by_diag, seen_by_diag)
+
+    rules: List[dict] = []
+    for diag_id in sorted(phrases_by_diag.keys()):
+        phrases = phrases_by_diag.get(diag_id, [])
+        if not phrases:
+            continue
+        score_candidates = scores_by_diag.get(diag_id, [])
+        score = max(score_candidates) if score_candidates else 0.3
         diag = diagnostics_by_id.get(diag_id, {})
-
-        any_phrases = [
-            mapping["loose_symptom_example"],
-            mapping["canonical_symptom"],
-        ]
-
-        rule: dict = {
-            "label": diag_id,
-            "any": any_phrases,
-            "all": [],
-            "score": float(mapping.get("likelihood_relative", 1.0)),
-            "notes": f"auto from mapping_id={mapping['mapping_id']}",
-        }
-
-        rules.append(rule)
+        notes_parts: List[str] = []
+        mapping_ids = [mid for mid in mapping_ids_by_diag.get(diag_id, []) if mid]
+        if mapping_ids:
+            notes_parts.append(f"auto from mapping_ids={','.join(mapping_ids)}")
+        if diag.get("specific_diagnostic_name"):
+            notes_parts.append(f"specific={diag['specific_diagnostic_name']}")
+        notes = "; ".join(notes_parts) if notes_parts else "auto from diagnostics_v3"
+        rules.append(
+            {
+                "label": diag_id,
+                "any": phrases,
+                "all": [],
+                "score": float(score),
+                "notes": notes,
+            }
+        )
 
     data = {
         "rules": rules,

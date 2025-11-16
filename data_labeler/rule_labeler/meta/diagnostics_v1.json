@@ -62,5 +62,251 @@
     "dx.outdoor_unit_damaged_coil_fins",
     "dx.thermostat_off_user_error",
     "dx.no_fault_system_normal_extreme_conditions"
-  ]
+  ],
+  "label_details": {
+    "dx.refrigerant_undercharge": {
+      "description": "System has insufficient refrigerant charge, typically due to a leak or improper charging.",
+      "typical_effect_on_operation": "Reduced capacity, longer runtimes, possible coil frosting, poor comfort."
+    },
+    "dx.refrigerant_overcharge": {
+      "description": "System has too much refrigerant (overcharged), leading to abnormally high pressures and inefficiency.",
+      "typical_effect_on_operation": "High head pressure, reduced efficiency, potential compressor overheating, possible reduced cooling."
+    },
+    "dx.non_condensable_gases_in_refrigerant": {
+      "description": "Air or other non-condensable gases are present in the sealed refrigerant circuit.",
+      "typical_effect_on_operation": "Elevated condensing pressure, reduced cooling efficiency, and potential compressor strain."
+    },
+    "dx.thermal_expansion_valve_stuck_or_failed": {
+      "description": "The thermostatic expansion valve (TXV) is malfunctioning, causing incorrect refrigerant flow into the evaporator.",
+      "typical_effect_on_operation": "Evaporator may be starved (low cooling, potential coil icing) or flooded (risk of liquid carryover to compressor)."
+    },
+    "dx.filter_drier_or_capillary_tube_restriction": {
+      "description": "A restriction in the liquid line (often at the filter-drier or capillary tube) impedes refrigerant flow.",
+      "typical_effect_on_operation": "Starved evaporator, low suction pressure, potential frosting at or before the restriction, reduced cooling output."
+    },
+    "dx.compressor_not_starting_electrical_problem": {
+      "description": "The compressor fails to start due to an electrical issue (e.g., failed start components or lack of power to the compressor).",
+      "typical_effect_on_operation": "No cooling (compressor does not run), although the outdoor fan might run; system may hum then shut off."
+    },
+    "dx.compressor_internal_failure_mechanical_valve": {
+      "description": "The compressor runs but has internal mechanical damage or leaking valves, severely reducing its ability to pump refrigerant.",
+      "typical_effect_on_operation": "Greatly reduced cooling capacity (or none at all) despite the compressor running; system may never reach setpoint and may run continuously."
+    },
+    "dx.reversing_valve_stuck_or_leaking": {
+      "description": "In a heat pump, the reversing valve is not switching or sealing properly, causing the system to be stuck in one mode or to leak refrigerant flow between modes.",
+      "typical_effect_on_operation": "Heat pump may be unable to switch from cooling to heating (or vice versa), or performance is degraded due to refrigerant bypass (cooling and heating happening simultaneously to some extent)."
+    },
+    "dx.compressor_short_cycling": {
+      "description": "The compressor turns on and off too frequently in short intervals, not completing normal cycles.",
+      "typical_effect_on_operation": "Inefficient operation, poor dehumidification, and increased wear on the compressor. Indoor comfort may suffer due to temperature swings."
+    },
+    "dx.clogged_dirty_air_filter": {
+      "description": "The HVAC system's air filter is loaded with dirt and debris, restricting airflow through the system.",
+      "typical_effect_on_operation": "Significantly reduced airflow, leading to poor cooling/heating performance. In cooling, can cause coil icing; in heating, can cause furnace overheating."
+    },
+    "dx.dirty_or_clogged_evaporator_coil": {
+      "description": "The indoor evaporator coil is fouled with dust, dirt, or biological growth, impeding airflow and heat exchange.",
+      "typical_effect_on_operation": "Reduced cooling capacity and efficiency; can lead to excessively low coil temperature and eventual icing of the coil."
+    },
+    "dx.blower_motor_failure_or_fan_not_running": {
+      "description": "The indoor blower (air handler/furnace fan) is not operational due to motor or electrical failure, resulting in no circulation of air.",
+      "typical_effect_on_operation": "No air flows through the ducts. In cooling, the evaporator coil may freeze due to zero airflow; in heating, the furnace may overheat and trip safety limits."
+    },
+    "dx.significant_duct_leakage_or_disconnection": {
+      "description": "Major leaks or a disconnected duct in the air distribution system are causing conditioned air to escape before reaching the living space.",
+      "typical_effect_on_operation": "Some or all rooms receive insufficient airflow, leading to weak or no cooling/heating in certain areas. The system runs longer and efficiency drops."
+    },
+    "dx.undersized_or_blocked_ducts_registers": {
+      "description": "The ductwork or vents are too small or obstructed, limiting the volume of air that can flow to certain areas.",
+      "typical_effect_on_operation": "Reduced airflow to some rooms (or whole house if return is undersized), causing poor comfort and potentially noisy high-velocity airflow (whistling). System may run longer to compensate."
+    },
+    "dx.blower_running_wrong_speed_or_clogged_wheel": {
+      "description": "The indoor blower is not delivering its rated airflow because it’s set to an incorrect speed tap or its fan wheel is coated with dirt.",
+      "typical_effect_on_operation": "Lower-than-intended airflow can cause inadequate cooling or heating distribution and may contribute to coil icing or furnace overheating."
+    },
+    "dx.dirty_or_blocked_condenser_coil": {
+      "description": "The outdoor condenser coil is coated with dirt or obstructed by debris, impeding the system’s ability to reject heat.",
+      "typical_effect_on_operation": "Elevated head pressures, reduced cooling capacity, longer runtimes, and potential compressor overheating or high-pressure trips on very hot days."
+    },
+    "dx.condenser_fan_motor_failure": {
+      "description": "The outdoor fan responsible for drawing air through the condenser coil is not running due to a failed motor or related component, so the condenser has little to no airflow.",
+      "typical_effect_on_operation": "Without the condenser fan, head pressure skyrockets and the compressor will overheat or trip on high pressure, resulting in loss of cooling and potential compressor damage if it continues."
+    },
+    "dx.condenser_fan_not_at_full_speed": {
+      "description": "The outdoor fan is running at a reduced speed due to a weak capacitor or mechanical drag (e.g., worn motor bearings), resulting in suboptimal condenser airflow.",
+      "typical_effect_on_operation": "Moderately elevated head pressures and reduced efficiency. The AC may work under light conditions but struggle or trip in high ambient temperatures due to insufficient condenser cooling."
+    },
+    "dx.outdoor_unit_obstructed_debris": {
+      "description": "The condenser’s airflow is impeded by external obstructions such as debris buildup around the unit or an improperly placed cover.",
+      "typical_effect_on_operation": "Similar to a dirty coil: heat can’t be rejected effectively. The system may overheat or have reduced capacity, especially in high outdoor temperatures, potentially tripping high-pressure safety."
+    },
+    "dx.blown_fuse_or_tripped_breaker": {
+      "description": "The primary power supply to the HVAC system has been interrupted by a blown fuse or a tripped circuit breaker, cutting power to some or all components.",
+      "typical_effect_on_operation": "The HVAC system (or a major component like the outdoor unit) will not operate at all. There may be no signs of life (no fan, no compressor, no display on thermostat if it shares the circuit)."
+    },
+    "dx.main_power_switch_off": {
+      "description": "The HVAC system’s main power switch (indoor furnace switch or outdoor disconnect) is turned off, meaning the equipment is not powered.",
+      "typical_effect_on_operation": "The system appears completely dead: no blower, no compressor activity, no response at all to thermostat demands."
+    },
+    "dx.control_transformer_failure_no_24v": {
+      "description": "The low-voltage transformer (typically 120V/240V to 24V) has failed or a low-voltage fuse is blown, resulting in loss of 24-volt control power.",
+      "typical_effect_on_operation": "The thermostat and control circuits are unpowered. The system will not respond to any commands (no relays or valves actuating, thermostat may be blank if it doesn’t have batteries)."
+    },
+    "dx.failed_start_or_run_capacitor": {
+      "description": "One of the capacitors (start or run) that provide the necessary phase shift to start and run the compressor or fan motor has failed or weakened significantly.",
+      "typical_effect_on_operation": "The associated motor (compressor or fan) struggles to start or doesn’t start at all. Often just a humming sound is heard while the motor fails to turn, and the system may shut down on overload."
+    },
+    "dx.compressor_or_fan_contactor_failed": {
+      "description": "The high-voltage contactor (relay) that controls power to the compressor and/or outdoor fan is defective – possibly stuck open (not energizing circuit) or stuck closed (unable to disengage).",
+      "typical_effect_on_operation": "If stuck open, the compressor (and maybe fan) will not turn on at all despite the coil being energized. If stuck closed, the compressor/fan may run continuously even when not commanded. In either case, cooling/heating is affected and safety can be an issue if stuck closed."
+    },
+    "dx.loose_or_corroded_wiring_connection": {
+      "description": "One or more electrical connections in the HVAC system are loose, oxidized, or otherwise not making good contact, causing intermittent operation or failure of components due to voltage drops or open circuits.",
+      "typical_effect_on_operation": "The effect can vary from intermittent shut-offs and failures to start, to components (like motors) receiving lower voltage and overheating. It can manifest as random system outages or unreliable performance."
+    },
+    "dx.control_board_failure_or_fault": {
+      "description": "The system’s control board (or furnace/air handler integrated circuit board) has malfunctioned due to component failure or firmware issues.",
+      "typical_effect_on_operation": "The HVAC system may not operate at all, or may behave erratically (e.g., blower or outdoor unit not being commanded on, or stuck on). Diagnostic LEDs might indicate a board fault. Essentially, the 'brain' isn’t sending proper signals."
+    },
+    "dx.voltage_supply_problem_brownout_or_phase_loss": {
+      "description": "The HVAC equipment is experiencing incorrect supply voltage: either consistently low voltage (brownout) or the loss of one phase in a three-phase system, leading to improper motor operation.",
+      "typical_effect_on_operation": "Motors (compressors, fans) may fail to start or run very hot due to undervoltage or missing phase. The system may trip overload protectors or not operate at full capacity. Severe phase imbalance can quickly burn out three-phase motors."
+    },
+    "dx.blower_or_fan_motor_shorted_burned_out": {
+      "description": "A motor (either indoor blower or outdoor fan) has electrically failed, either by shorting internally or the winding has opened, causing it not to run and often blowing fuses or tripping breakers.",
+      "typical_effect_on_operation": "The affected fan will not operate at all. If it’s the indoor blower, no airflow; if it’s the outdoor fan, the compressor may trip off on high pressure quickly. A direct short may blow a fuse instantly when the motor circuit is energized."
+    },
+    "dx.compressor_thermal_overload_trip": {
+      "description": "The compressor’s internal thermal overload protector is tripping because the compressor is running too hot, often due to stressful conditions or another fault.",
+      "typical_effect_on_operation": "The compressor will shut off (or refuse to start) intermittently. Cooling will stop until the compressor cools and the overload resets. This can manifest as the AC working for a short period then the outdoor unit stopping, possibly cycling in this manner."
+    },
+    "dx.thermostat_set_incorrectly_mode_or_temp": {
+      "description": "The thermostat was not set to the desired mode or temperature for conditioning (e.g., it might be set to heating or off when cooling is expected, or the setpoint is misadjusted).",
+      "typical_effect_on_operation": "The HVAC system does not run in the expected mode. For example, cooling won’t come on if thermostat is in heat mode, or the system remains off if the setpoint isn’t reached due to a mis-set temperature."
+    },
+    "dx.thermostat_unresponsive_or_malfunctioning": {
+      "description": "The thermostat is not functioning properly – it may not register the correct temperature or its controls may not engage the HVAC system, despite being set correctly.",
+      "typical_effect_on_operation": "The HVAC system may not turn on or off as commanded. This can lead to no heating/cooling or continuous running. Comfort is impacted because the control point of the system is not behaving as intended."
+    },
+    "dx.thermostat_batteries_dead_or_no_power": {
+      "description": "The thermostat has lost power, either due to drained batteries (in battery-powered models) or loss of 24V supply (in hard-wired models), causing it to go blank or offline.",
+      "typical_effect_on_operation": "The HVAC system will not receive any commands to turn on or off. Essentially, the system may remain off because the 'brain' (thermostat) isn't functioning. If the thermostat is blank, it’s obvious; if it's just not powered enough to close relays, it quietly fails to control."
+    },
+    "dx.thermostat_wiring_misconfigured_or_loose": {
+      "description": "The low-voltage wiring between the thermostat and HVAC equipment is incorrect (miswired) or a connection has come loose/undone, so signals are not properly reaching the equipment or are activating the wrong functions.",
+      "typical_effect_on_operation": "Possibly no response from HVAC to thermostat, or wrong equipment turning on. For example, the heat might come on when calling for cool (common if O/B reversing valve wire mixed up), or nothing happens at all due to an open circuit."
+    },
+    "dx.cooling_disabled_or_heat_on": {
+      "description": "Cooling mode is not actually running because either the system is intentionally or unintentionally in the wrong mode (heat or off), or an auxiliary heat source is running concurrently, causing warm air output even when cooling is expected.",
+      "typical_effect_on_operation": "The user experiences warm air from the vents despite expecting cooling. Essentially, cooling is not active - either because it's turned off at controls or because heat is counteracting it."
+    },
+    "dx.thermostat_scheduling_issue": {
+      "description": "The thermostat’s programmed schedule or smart features are setting the system in a way that conflicts with occupant comfort (e.g., setting the temperature higher during certain periods, making it seem like the HVAC isn’t working).",
+      "typical_effect_on_operation": "The HVAC might not run when the user expects it to, due to programmed setbacks or off cycles, causing discomfort or the impression of a malfunction. Alternatively, it might turn off early or not reach setpoint due to an energy-saving schedule."
+    },
+    "dx.zone_damper_or_controller_malfunction": {
+      "description": "In a multi-zone HVAC system, one or more zone dampers are not operating correctly or the zone control board is failing to send proper signals, resulting in improper airflow to one or more zones.",
+      "typical_effect_on_operation": "One zone may receive no heating/cooling (damper stuck closed) or too much (damper stuck open) regardless of thermostat demand. Overall system balance is disturbed; some areas get uncomfortable while others may overcondition."
+    },
+    "dx.communication_failure": {
+      "description": "A communication bus or link between control components has failed. In VRF or modern systems, this could be the communication between indoor and outdoor units or between thermostat and control module.",
+      "typical_effect_on_operation": "The system may shut down or go into a fault mode because control signals are not being exchanged. In some cases, only certain parts of the system respond (e.g., some VRF indoor units offline). Error codes or blinking lights often accompany communication failures."
+    },
+    "dx.thermostat_sensor_miscalibrated_or_poor_location": {
+      "description": "The thermostat’s temperature sensor is reading incorrectly or is installed in a location that doesn’t represent the true space conditions (e.g., in direct sunlight or in the path of a supply vent), causing improper system cycling.",
+      "typical_effect_on_operation": "The HVAC might short cycle or run excessively, depending on the misread. For instance, a thermostat in a hot spot will turn off the AC too late (overcooling other areas), whereas if it’s in a cold draft, it might turn off the heat prematurely. Comfort is inconsistent."
+    },
+    "dx.faulty_temperature_sensor": {
+      "description": "A temperature sensor within the HVAC system (not the main thermostat, but e.g., evaporator coil freeze sensor, outdoor temp sensor, room sensor in VRF) is malfunctioning, giving incorrect readings or none at all.",
+      "typical_effect_on_operation": "The system might behave improperly: for example, a bad coil sensor could falsely trip a freeze protection and stop cooling, or a bad outdoor sensor might disable heat pump defrost or economizer operation. The system may throw an error code or simply not run optimally."
+    },
+    "dx.faulty_pressure_sensor_or_switch": {
+      "description": "A pressure transducer or mechanical pressure switch in the system is giving a false reading or is stuck open/closed, leading to incorrect system control or nuisance trips.",
+      "typical_effect_on_operation": "If a high-pressure or low-pressure switch is faulty, it might shut the system down even when pressures are normal (or fail to shut it down when there's a real problem). A faulty transducer could feed wrong data to a control system, causing improper modulation or triggering alarms."
+    },
+    "dx.faulty_humidity_sensor": {
+      "description": "A humidity sensor (in a thermostat or separate humidistat/ventilation control) is not reading correctly or is stuck, which can affect dehumidification control or ventilation systems.",
+      "typical_effect_on_operation": "If the sensor under-reads, a dehumidifier or reheat might not turn on, leading to high indoor humidity. If it over-reads, the system might over-dehumidify or run unnecessarily. It could also affect economizer operation if enthalpy controls are used."
+    },
+    "dx.flame_sensor_dirty_or_failed": {
+      "description": "The flame sensor (flame rectification probe) is not detecting the burner flame, usually due to being coated in soot/oxide or because it has failed, causing the control to shut off the gas for safety.",
+      "typical_effect_on_operation": "The furnace or boiler ignites but then shuts off the gas within a few seconds, as the flame sensor does not register the flame. The system may attempt this ignition cycle multiple times before locking out, resulting in no sustained heat output."
+    },
+    "dx.high_limit_switch_open_furnace_overheat": {
+      "description": "The furnace’s high-temperature limit safety switch has tripped (opened) because the furnace overheated, typically due to lack of airflow. This cuts power to the burners to prevent damage or hazards.",
+      "typical_effect_on_operation": "The furnace burners will shut off prematurely, often after only a short burn, while the blower may continue to run (to cool the heat exchanger). Heating is intermittent or insufficient as the furnace cycles off on the limit."
+    },
+    "dx.furnace_pressure_switch_failed_or_tubing_blocked": {
+      "description": "The pressure switch in the furnace, which ensures proper inducer operation and venting, is not closing as expected. This could be due to a malfunctioning switch, a blockage in the flue or condensate line, or the inducer not creating enough vacuum.",
+      "typical_effect_on_operation": "The furnace will not ignite because the control does not get the “all clear” signal from the pressure switch that the inducer is establishing draft. The inducer motor may run for a while then the furnace shuts down with an error. No heat is produced."
+    },
+    "dx.condensate_overflow_float_switch_triggered": {
+      "description": "The safety float switch in the condensate drain pan or line has tripped due to a high water level, usually from a clogged condensate drain, and it has turned off the cooling system to prevent water overflow.",
+      "typical_effect_on_operation": "The air conditioner stops cooling entirely (outdoor unit often shuts off) even though the thermostat is calling for cooling. The blower might still run, but no cold air is produced, as the system has been disabled by the safety switch."
+    },
+    "dx.low_water_cutoff_engaged": {
+      "description": "The boiler’s low-water cutoff switch has activated because the water level or pressure in the boiler dropped below a safe threshold, so the boiler burner is shut down to prevent dry firing.",
+      "typical_effect_on_operation": "The boiler will not fire at all while this safety is open. The building will get no heat from the boiler. Often an indicator light or alarm is present on the boiler control when low water is detected."
+    },
+    "dx.igniter_or_pilot_failure": {
+      "description": "The furnace or boiler fails to ignite at all because the ignition source (hot surface igniter or pilot light) is not functioning properly.",
+      "typical_effect_on_operation": "No heat is produced because the burners do not light. The system will typically attempt to ignite several times then enter a safety lockout, resulting in the furnace/blower running cold or the boiler not firing."
+    },
+    "dx.gas_valve_not_opening_or_gas_supply_off": {
+      "description": "No gas is reaching the burners. This can occur if the gas supply is shut off or if the furnace’s gas valve fails to open when energized.",
+      "typical_effect_on_operation": "The furnace or boiler will not produce any flame at all, so no heat. You may have the ignition source activating (glow or spark), but since no gas flows, ignition won’t occur. The system typically will lock out after failing to detect flame."
+    },
+    "dx.dirty_or_clogged_burners": {
+      "description": "The furnace or boiler burners have accumulated dirt, rust, or soot, which impedes proper gas flow and combustion. The flames may burn unevenly or not fully.",
+      "typical_effect_on_operation": "Ignition may be delayed or incomplete (causing booms or rollout), flame may be yellow or wavering, and combustion efficiency drops. Carbon monoxide production can increase due to improper burner combustion."
+    },
+    "dx.cracked_heat_exchanger": {
+      "description": "The furnace’s heat exchanger has developed a crack or hole. This is a serious condition as it can allow combustion gases (including carbon monoxide) to mix with indoor air and also affects burner operation.",
+      "typical_effect_on_operation": "The furnace may exhibit erratic burner flames (flame rollout when the blower comes on). It often triggers safety devices like the rollout switches. Worst case, carbon monoxide can leak into the home. Heating performance might drop, and the furnace might shut down on safety limits frequently."
+    },
+    "dx.blocked_flue_or_chimney": {
+      "description": "The exhaust vent or chimney is obstructed, preventing combustion gases from properly venting out. This often triggers the furnace’s pressure switch or spill switches, and can lead to a hazardous spillage of flue gases.",
+      "typical_effect_on_operation": "The furnace or boiler may not ignite at all because the inducer cannot establish adequate draft (pressure switch stays open). In some cases, if it does fire, exhaust gases could spill into the area (very dangerous). Usually, the unit will shut itself down quickly for safety."
+    },
+    "dx.draft_inducer_motor_failure": {
+      "description": "The furnace’s draft inducer fan (which pulls combustion air through the heat exchanger and into the flue) is not operating due to motor failure or mechanical issue, so proper combustion airflow cannot be established.",
+      "typical_effect_on_operation": "The furnace will not ignite because the pressure switch won’t close (since the inducer isn’t creating the necessary vacuum). You may hear the furnace click on and perhaps a faint hum, but the inducer wheel doesn’t spin. No flame occurs and the system shuts down, often with a fault indication."
+    },
+    "dx.insufficient_combustion_air_flame_rollout": {
+      "description": "There is not enough fresh air for combustion, often due to a very tight mechanical room or a blocked combustion air intake, causing the flames to 'roll out' of the burner area seeking oxygen.",
+      "typical_effect_on_operation": "The furnace may experience flame rollout – flames coming out of the normal burner area – which trips the rollout safety switches and shuts off the furnace to prevent a fire hazard. The furnace will stop heating and typically requires manual reset of rollout switches."
+    },
+    "dx.electric_heat_strips_not_working": {
+      "description": "In an electric furnace or heat pump auxiliary heat, the electric resistance heating elements are not energizing. This could be due to the elements themselves being burnt out, or a control/relay not turning them on.",
+      "typical_effect_on_operation": "In pure electric furnaces: no heat at all, just fan running (blowing room-temperature air). In heat pumps: insufficient heat in cold weather or during defrost cycles because the auxiliary heat isn’t supplementing. The system struggles to maintain temperature."
+    },
+    "dx.heat_pump_auxiliary_heat_stuck_on_or_off": {
+      "description": "The backup heating (electric resistive heat strips or gas furnace in a dual-fuel system) for a heat pump is not operating correctly – either it never comes on when needed, or it is running when it shouldn't (stuck on).",
+      "typical_effect_on_operation": "If stuck off: During very cold weather or defrost cycles, the heat pump alone may not maintain indoor temperature, resulting in cold indoor conditions. If stuck on: The auxiliary heat runs continuously, possibly even when the heat pump is cooling, leading to extremely high energy use and potentially overly hot air or simultaneous heating and cooling."
+    },
+    "dx.system_undersized_for_load_or_extreme_weather": {
+      "description": "The HVAC system’s capacity is too low for the space, or weather conditions exceed its design parameters, so it cannot maintain the set temperature on very hot or cold days.",
+      "typical_effect_on_operation": "During peak weather (heat wave or cold snap), the system may run continuously at full output yet the indoor temperature drifts from the setpoint (too warm in summer, too cool in winter). The equipment itself is functioning normally but is simply maxed out."
+    },
+    "dx.system_oversized_short_cycles_high_humidity": {
+      "description": "The HVAC system has more capacity than required for the space, causing it to satisfy the thermostat quickly and turn off before sufficient runtime (especially for AC) to dehumidify or evenly condition the space.",
+      "typical_effect_on_operation": "Short and frequent on/off cycling, uneven temperature distribution, higher indoor humidity (in cooling mode) because the system does not run long enough to remove moisture. It also increases wear on components due to frequent starts."
+    },
+    "dx.refrigerant_lines_kinked_or_wrong_size": {
+      "description": "The refrigerant line-set has physical kinks or was installed with an incorrect diameter or length, affecting refrigerant flow and oil return.",
+      "typical_effect_on_operation": "Restricted or suboptimal flow of refrigerant can reduce efficiency and capacity. A kink acts like a partial blockage, causing low suction pressure and potentially compressor overheating. Wrong line sizing might lead to inadequate oil return or performance losses."
+    },
+    "dx.outdoor_unit_damaged_coil_fins": {
+      "description": "The aluminum fins on the outdoor condenser coil are flattened or damaged over a significant area, such as from hail strikes or mechanical impact, reducing heat transfer and airflow.",
+      "typical_effect_on_operation": "Similar to a dirty coil, the damaged fins impede airflow and heat rejection. Head pressures rise, efficiency falls, and capacity can drop. On hot days, the system may struggle or trip on high pressure if enough fin area is flattened."
+    },
+    "dx.thermostat_off_user_error": {
+      "description": "There is no actual equipment fault; the HVAC system is not running simply because it was manually turned off or set improperly by the user (or someone in the household), albeit unknowingly.",
+      "typical_effect_on_operation": "The system remains off, providing no cooling or heating, leading the user to believe there is a malfunction. Once the control is returned to the correct setting (system On/Auto), normal operation resumes."
+    },
+    "dx.no_fault_system_normal_extreme_conditions": {
+      "description": "The system is functioning as designed, but due to extremely high (or low) outdoor temperatures or other unusual conditions, it appears to underperform. Essentially, there's no mechanical fault; the circumstances are beyond the system’s design limits.",
+      "typical_effect_on_operation": "The HVAC might run at full capacity continuously and still not maintain the desired indoor temperature. The unit isn’t short cycling or showing errors—just running non-stop and the indoor temperature is drifting from setpoint during the peak conditions."
+    }
+  }
 }

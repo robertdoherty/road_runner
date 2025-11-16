@@ -160,45 +160,53 @@ def build_diagnostic_labeler_chain() -> RunnableSequence:
     return DIAG_PROMPT | llm
 
 
-def render_allowed_labels(ontology: Dict[str, Any]) -> str:
-    """Render allowed labels with descriptions from golden set.
-    
-    Loads descriptions from golden set (GOLDEN_DIAGNOSTIC_CHART_PATH).
-    Raises ValueError if labels or descriptions cannot be loaded.
-    """
-    labels = ontology.get("labels", [])
-    if not labels:
-        raise ValueError("No labels found in ontology")
-    
-    # Load descriptions from golden set
+def _load_label_details_from_golden() -> Dict[str, Dict[str, str]]:
+    """Fallback helper to pull descriptions/effects from the golden set."""
     root = _repo_root()
     sys.path.insert(0, root)
     from config import GOLDEN_DIAGNOSTIC_CHART_PATH
+
     golden_path = os.path.join(root, GOLDEN_DIAGNOSTIC_CHART_PATH)
-    
-    try:
-        golden_data = _load_json(golden_path)
-    except Exception as e:
-        raise ValueError(f"Failed to load golden set from {golden_path}: {e}")
-    
-    diagnostics = golden_data.get("diagnostics", [])
-    if not diagnostics:
-        raise ValueError(f"No diagnostics found in golden set at {golden_path}")
-    
-    descriptions_map = {}
+    golden_data = _load_json(golden_path)
+    diagnostics = golden_data.get("diagnostics", []) or []
+
+    details: Dict[str, Dict[str, str]] = {}
     for diag in diagnostics:
         diag_id = diag.get("diagnostic_id")
-        desc = diag.get("description") or diag.get("specific_diagnostic_name", "")
-        if diag_id:
-            descriptions_map[diag_id] = desc
-    
+        if not diag_id:
+            continue
+        details[diag_id] = {
+            "description": diag.get("description")
+            or diag.get("specific_diagnostic_name")
+            or "",
+            "typical_effect_on_operation": diag.get("typical_effect_on_operation", ""),
+        }
+    return details
+
+
+def render_allowed_labels(ontology: Dict[str, Any]) -> str:
+    """Render allowed labels with descriptions and typical effects."""
+    labels = ontology.get("labels", [])
+    if not labels:
+        raise ValueError("No labels found in ontology")
+
+    details = ontology.get("label_details") or {}
+    # Fallback to golden set if necessary
+    if not details or any(lid not in details for lid in labels):
+        details = _load_label_details_from_golden()
+
     lines = []
     for lid in labels:
-        desc = descriptions_map.get(lid, "")
-        if not desc:
-            raise ValueError(f"No description found for label '{lid}' in golden set")
-        lines.append(f"- {lid}: {desc}")
-    
+        info = details.get(lid, {})
+        description = info.get("description") or ""
+        typical_effect = info.get("typical_effect_on_operation") or ""
+        if not description and not typical_effect:
+            raise ValueError(f"No description/effect found for label '{lid}'")
+        text = f"- {lid}: {description}".strip()
+        if typical_effect:
+            text = f"{text} | Typical effect: {typical_effect}"
+        lines.append(text)
+
     return "\n".join(lines)
 
 

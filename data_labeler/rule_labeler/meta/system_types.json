@@ -4,10 +4,15 @@
     "chiller_ahu_system",
     "commercial_rtu",
     "ductless_mini_split",
+    "ground_source_heat_pump",
+    "packaged_terminal_ac",
+    "packaged_terminal_heat_pump",
     "residential_furnace",
     "residential_heat_pump",
     "residential_split_ac",
-    "vrf_system"
+    "vrf_system",
+    "water_source_heat_pump",
+    "window_ac"
   ],
   "by_diagnostic_id": {
     "dx.refrigerant_undercharge": [
@@ -16,231 +21,434 @@
       "commercial_rtu",
       "chiller_ahu_system",
       "vrf_system",
-      "ductless_mini_split"
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "window_ac"
     ],
     "dx.refrigerant_overcharge": [
       "residential_split_ac",
       "residential_heat_pump",
       "commercial_rtu",
       "chiller_ahu_system",
-      "vrf_system"
+      "vrf_system",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "window_ac"
     ],
     "dx.non_condensable_gases_in_refrigerant": [
       "residential_split_ac",
       "residential_heat_pump",
       "commercial_rtu",
-      "chiller_ahu_system"
+      "chiller_ahu_system",
+      "vrf_system",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump"
     ],
     "dx.thermal_expansion_valve_stuck_or_failed": [
       "residential_split_ac",
       "residential_heat_pump",
       "commercial_rtu",
-      "vrf_system"
+      "vrf_system",
+      "chiller_ahu_system",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump"
     ],
     "dx.filter_drier_or_capillary_tube_restriction": [
       "residential_split_ac",
       "residential_heat_pump",
       "commercial_rtu",
-      "vrf_system"
+      "chiller_ahu_system",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "window_ac"
     ],
     "dx.compressor_not_starting_electrical_problem": [
       "residential_split_ac",
       "residential_heat_pump",
       "commercial_rtu",
+      "vrf_system",
       "chiller_ahu_system",
-      "vrf_system"
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "window_ac"
     ],
     "dx.compressor_internal_failure_mechanical_valve": [
       "residential_split_ac",
       "residential_heat_pump",
       "commercial_rtu",
+      "vrf_system",
       "chiller_ahu_system",
-      "vrf_system"
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "window_ac"
     ],
     "dx.reversing_valve_stuck_or_leaking": [
       "residential_heat_pump",
-      "vrf_system"
+      "vrf_system",
+      "commercial_rtu",
+      "ductless_mini_split",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump"
     ],
     "dx.compressor_short_cycling": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "vrf_system",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "window_ac",
+      "chiller_ahu_system"
     ],
     "dx.clogged_dirty_air_filter": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
-      "commercial_rtu"
+      "commercial_rtu",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "vrf_system",
+      "window_ac",
+      "ductless_mini_split"
     ],
     "dx.dirty_or_clogged_evaporator_coil": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "vrf_system",
+      "window_ac",
+      "ductless_mini_split"
     ],
     "dx.blower_motor_failure_or_fan_not_running": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
-      "commercial_rtu"
+      "commercial_rtu",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "vrf_system",
+      "ductless_mini_split"
     ],
     "dx.significant_duct_leakage_or_disconnection": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "residential_furnace",
+      "commercial_rtu",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "vrf_system"
     ],
     "dx.undersized_or_blocked_ducts_registers": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
-      "commercial_rtu"
+      "commercial_rtu",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "vrf_system"
     ],
     "dx.blower_running_wrong_speed_or_clogged_wheel": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
-      "commercial_rtu"
+      "commercial_rtu",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "vrf_system",
+      "ductless_mini_split"
     ],
     "dx.dirty_or_blocked_condenser_coil": [
       "residential_split_ac",
       "residential_heat_pump",
       "commercial_rtu",
-      "chiller_ahu_system"
+      "chiller_ahu_system",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "vrf_system",
+      "window_ac"
     ],
     "dx.condenser_fan_motor_failure": [
       "residential_split_ac",
       "residential_heat_pump",
       "commercial_rtu",
-      "chiller_ahu_system"
+      "chiller_ahu_system",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "vrf_system",
+      "window_ac"
     ],
     "dx.condenser_fan_not_at_full_speed": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "chiller_ahu_system",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "vrf_system",
+      "window_ac"
     ],
     "dx.outdoor_unit_obstructed_debris": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "vrf_system",
+      "window_ac"
     ],
     "dx.blown_fuse_or_tripped_breaker": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
       "commercial_rtu",
-      "boiler_hydronic"
+      "boiler_hydronic",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "vrf_system",
+      "chiller_ahu_system",
+      "window_ac"
     ],
     "dx.main_power_switch_off": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "residential_furnace",
+      "boiler_hydronic",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "vrf_system",
+      "chiller_ahu_system",
+      "window_ac"
     ],
     "dx.control_transformer_failure_no_24v": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
-      "commercial_rtu"
+      "commercial_rtu",
+      "boiler_hydronic",
+      "water_source_heat_pump",
+      "ground_source_heat_pump"
     ],
     "dx.failed_start_or_run_capacitor": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "residential_furnace",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "window_ac"
     ],
     "dx.compressor_or_fan_contactor_failed": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump"
     ],
     "dx.loose_or_corroded_wiring_connection": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
       "commercial_rtu",
-      "boiler_hydronic"
+      "boiler_hydronic",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "vrf_system",
+      "chiller_ahu_system",
+      "window_ac"
     ],
     "dx.control_board_failure_or_fault": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
       "commercial_rtu",
-      "vrf_system"
+      "vrf_system",
+      "boiler_hydronic",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "ductless_mini_split",
+      "chiller_ahu_system"
     ],
     "dx.voltage_supply_problem_brownout_or_phase_loss": [
       "commercial_rtu",
       "chiller_ahu_system",
-      "vrf_system"
+      "vrf_system",
+      "residential_split_ac",
+      "residential_heat_pump",
+      "residential_furnace",
+      "boiler_hydronic",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "window_ac"
     ],
     "dx.blower_or_fan_motor_shorted_burned_out": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
-      "commercial_rtu"
+      "commercial_rtu",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "vrf_system",
+      "chiller_ahu_system"
     ],
     "dx.compressor_thermal_overload_trip": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "vrf_system",
+      "chiller_ahu_system"
     ],
     "dx.thermostat_set_incorrectly_mode_or_temp": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
-      "commercial_rtu"
+      "commercial_rtu",
+      "boiler_hydronic"
     ],
     "dx.thermostat_unresponsive_or_malfunctioning": [
       "residential_split_ac",
       "residential_heat_pump",
-      "residential_furnace"
+      "residential_furnace",
+      "commercial_rtu",
+      "boiler_hydronic"
     ],
     "dx.thermostat_batteries_dead_or_no_power": [
       "residential_split_ac",
       "residential_heat_pump",
-      "residential_furnace"
+      "residential_furnace",
+      "commercial_rtu",
+      "boiler_hydronic"
     ],
     "dx.thermostat_wiring_misconfigured_or_loose": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
-      "commercial_rtu"
+      "commercial_rtu",
+      "boiler_hydronic"
     ],
     "dx.cooling_disabled_or_heat_on": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump"
     ],
     "dx.thermostat_scheduling_issue": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "residential_furnace",
+      "commercial_rtu",
+      "boiler_hydronic"
     ],
     "dx.zone_damper_or_controller_malfunction": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu",
-      "vrf_system"
-    ],
-    "dx.communication_failure": [
-      "vrf_system",
-      "commercial_rtu"
-    ],
-    "dx.thermostat_sensor_miscalibrated_or_poor_location": [
-      "residential_split_ac",
-      "residential_heat_pump",
-      "residential_furnace"
-    ],
-    "dx.faulty_temperature_sensor": [
-      "residential_split_ac",
-      "residential_heat_pump",
-      "commercial_rtu",
-      "vrf_system"
-    ],
-    "dx.faulty_pressure_sensor_or_switch": [
+      "residential_furnace",
       "commercial_rtu",
       "vrf_system",
       "chiller_ahu_system"
     ],
-    "dx.faulty_humidity_sensor": [
+    "dx.communication_failure": [
+      "vrf_system",
       "commercial_rtu",
-      "vrf_system"
+      "residential_split_ac",
+      "residential_heat_pump"
+    ],
+    "dx.thermostat_sensor_miscalibrated_or_poor_location": [
+      "residential_split_ac",
+      "residential_heat_pump",
+      "residential_furnace",
+      "commercial_rtu",
+      "boiler_hydronic"
+    ],
+    "dx.faulty_temperature_sensor": [
+      "vrf_system",
+      "ductless_mini_split",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "chiller_ahu_system"
+    ],
+    "dx.faulty_pressure_sensor_or_switch": [
+      "residential_split_ac",
+      "residential_heat_pump",
+      "commercial_rtu",
+      "vrf_system",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "ductless_mini_split",
+      "packaged_terminal_heat_pump",
+      "chiller_ahu_system"
+    ],
+    "dx.faulty_humidity_sensor": [
+      "residential_split_ac",
+      "residential_heat_pump",
+      "commercial_rtu",
+      "chiller_ahu_system"
     ],
     "dx.flame_sensor_dirty_or_failed": [
       "residential_furnace",
@@ -253,12 +461,18 @@
     ],
     "dx.furnace_pressure_switch_failed_or_tubing_blocked": [
       "residential_furnace",
-      "commercial_rtu"
+      "commercial_rtu",
+      "boiler_hydronic"
     ],
     "dx.condensate_overflow_float_switch_triggered": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "residential_furnace",
+      "ductless_mini_split",
+      "vrf_system",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "chiller_ahu_system"
     ],
     "dx.low_water_cutoff_engaged": [
       "boiler_hydronic"
@@ -289,50 +503,97 @@
     ],
     "dx.draft_inducer_motor_failure": [
       "residential_furnace",
-      "commercial_rtu"
+      "commercial_rtu",
+      "boiler_hydronic"
     ],
     "dx.insufficient_combustion_air_flame_rollout": [
       "residential_furnace",
-      "commercial_rtu"
+      "boiler_hydronic"
     ],
     "dx.electric_heat_strips_not_working": [
+      "residential_split_ac",
+      "residential_heat_pump",
       "residential_furnace",
-      "commercial_rtu"
+      "commercial_rtu",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "ground_source_heat_pump"
     ],
     "dx.heat_pump_auxiliary_heat_stuck_on_or_off": [
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "residential_furnace",
+      "packaged_terminal_heat_pump",
+      "ground_source_heat_pump"
     ],
     "dx.system_undersized_for_load_or_extreme_weather": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "residential_furnace",
+      "boiler_hydronic",
+      "commercial_rtu",
+      "chiller_ahu_system",
+      "vrf_system",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "window_ac"
     ],
     "dx.system_oversized_short_cycles_high_humidity": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "vrf_system",
+      "chiller_ahu_system"
     ],
     "dx.refrigerant_lines_kinked_or_wrong_size": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "ductless_mini_split",
+      "vrf_system",
+      "ground_source_heat_pump"
     ],
     "dx.outdoor_unit_damaged_coil_fins": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "commercial_rtu",
+      "ductless_mini_split",
+      "vrf_system",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "window_ac",
+      "chiller_ahu_system"
     ],
     "dx.thermostat_off_user_error": [
       "residential_split_ac",
       "residential_heat_pump",
       "residential_furnace",
-      "commercial_rtu"
+      "boiler_hydronic",
+      "commercial_rtu",
+      "water_source_heat_pump",
+      "ground_source_heat_pump"
     ],
     "dx.no_fault_system_normal_extreme_conditions": [
       "residential_split_ac",
       "residential_heat_pump",
-      "commercial_rtu"
+      "residential_furnace",
+      "commercial_rtu",
+      "boiler_hydronic",
+      "chiller_ahu_system",
+      "vrf_system",
+      "ductless_mini_split",
+      "packaged_terminal_ac",
+      "packaged_terminal_heat_pump",
+      "water_source_heat_pump",
+      "ground_source_heat_pump",
+      "window_ac"
     ]
   }
 }
