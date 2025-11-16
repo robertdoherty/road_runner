@@ -12,7 +12,8 @@ def soft_target(diag2id: dict[str,int], y_diag: list[tuple[str,float]]|None=None
         i = diag2id.get(d)
         if i is not None: y[i] += float(w)
         tot += float(w)
-    if add_other:
+    if add_other and "dx.other_or_unclear" in diag2id:
+        # Only add residual weight to "other" category if it exists in vocabulary
         y[diag2id["dx.other_or_unclear"]] += max(0.0, 1.0 - tot)
         tot = 1.0
     if tot > 0: y /= y.sum()
