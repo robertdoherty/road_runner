@@ -1,0 +1,2404 @@
+{
+    "diagnostics": [
+      {
+        "diagnostic_id": "dx.refrigerant_undercharge",
+        "level_1_category": "Refrigerant circuit problem",
+        "level_2_subcategory": "Refrigerant charge",
+        "level_3_component": "Undercharge",
+        "general_diagnostic_name": "Refrigerant charge issue",
+        "specific_diagnostic_name": "Refrigerant undercharge",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "chiller_ahu_system",
+          "vrf_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "window_ac"
+        ],
+        "description": "System has insufficient refrigerant charge, typically due to a leak or improper charging.",
+        "typical_effect_on_operation": "Reduced capacity, longer runtimes, possible coil frosting, poor comfort.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Refrigerant leak at joints or coils",
+          "System not charged correctly at installation",
+          "Service leak not repaired before recharging"
+        ],
+        "canonical_symptoms": [
+          "Poor cooling performance",
+          "Some rooms never reach setpoint",
+          "Frost or ice on suction line or indoor coil"
+        ],
+        "technician_observation_phrases": [
+          "low suction pressure",
+          "low superheat or abnormal superheat/subcool pattern"
+        ],
+        "notes": "In the field this is often lumped together as 'low on charge' regardless of exact leak location.",
+        "evidence_snippets": [
+          "Signs of low refrigerant include poor cooling performance and ice forming on the coils or suction line:contentReference[oaicite:0]{index=0}.",
+          "Field studies found that improper refrigerant charge was present in over half of inspected AC systems:contentReference[oaicite:1]{index=1}."
+        ],
+        "source_ids": [
+          "ZONE_HVAC_COMMON_FAILURES_2023",
+          "PNNL_RESIDENTIAL_AFDD_2020"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.refrigerant_overcharge",
+        "level_1_category": "Refrigerant circuit problem",
+        "level_2_subcategory": "Refrigerant charge",
+        "level_3_component": "Overcharge",
+        "general_diagnostic_name": "Refrigerant charge issue",
+        "specific_diagnostic_name": "Refrigerant overcharge",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "chiller_ahu_system",
+          "vrf_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "window_ac"
+        ],
+        "description": "System has too much refrigerant (overcharged), leading to abnormally high pressures and inefficiency.",
+        "typical_effect_on_operation": "High head pressure, reduced efficiency, potential compressor overheating, possible reduced cooling.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "System overcharged during service",
+          "Incorrect refrigerant added to 'fix' cooling problem",
+          "Non-condensable gases present"
+        ],
+        "canonical_symptoms": [
+          "System struggles to cool despite everything running",
+          "Abnormally high discharge pressure readings",
+          "Compressor running hot"
+        ],
+        "technician_observation_phrases": [
+          "high head pressure",
+          "high subcooling with normal/high suction pressure"
+        ],
+        "notes": "Ironically, overcharging can reduce cooling capacity and put extra stress on the compressor due to high pressure.",
+        "evidence_snippets": [
+          "An overcharged system is characterized by high pressures (high head and suction) and can actually have reduced cooling capacity:contentReference[oaicite:2]{index=2}."
+        ],
+        "source_ids": [
+          "COMPRESSORS_UNLIMITED_BLOG_2019"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.non_condensable_gases_in_refrigerant",
+        "level_1_category": "Refrigerant circuit problem",
+        "level_2_subcategory": "Refrigerant contamination",
+        "level_3_component": "Non-condensables",
+        "general_diagnostic_name": "Refrigerant contamination",
+        "specific_diagnostic_name": "Non-condensable gases in refrigerant",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "chiller_ahu_system",
+          "vrf_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump"
+        ],
+        "description": "Air or other non-condensable gases are present in the sealed refrigerant circuit.",
+        "typical_effect_on_operation": "Elevated condensing pressure, reduced cooling efficiency, and potential compressor strain.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "System not evacuated properly (air left inside)",
+          "Leak repaired without pulling deep vacuum",
+          "Wrong service procedures introducing air"
+        ],
+        "canonical_symptoms": [
+          "System pressure readings outside normal range",
+          "Erratic cooling performance",
+          "Hissing/gurgling in system (if moisture freezing at TXV)"
+        ],
+        "technician_observation_phrases": [
+          "pressure readings outside normal range",
+          "superheat/subcool values abnormal"
+        ],
+        "notes": "Non-condensables typically require recovering refrigerant and evacuating the system to remove them.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.thermal_expansion_valve_stuck_or_failed",
+        "level_1_category": "Refrigerant circuit problem",
+        "level_2_subcategory": "Flow restriction",
+        "level_3_component": "Metering device",
+        "general_diagnostic_name": "Refrigerant flow issue",
+        "specific_diagnostic_name": "Thermal expansion valve stuck or failed",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "vrf_system",
+          "chiller_ahu_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump"
+        ],
+        "description": "The thermostatic expansion valve (TXV) is malfunctioning, causing incorrect refrigerant flow into the evaporator.",
+        "typical_effect_on_operation": "Evaporator may be starved (low cooling, potential coil icing) or flooded (risk of liquid carryover to compressor).",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Debris or moisture blocking the TXV",
+          "TXV sensing bulb charge lost",
+          "Mechanical failure of valve components"
+        ],
+        "canonical_symptoms": [
+          "Evaporator coil starved or freezing up",
+          "Inconsistent cooling and superheat readings",
+          "Possible compressor noise (liquid slugging) if flooding"
+        ],
+        "technician_observation_phrases": [
+          "erratic superheat readings",
+          "pressure oscillations at TXV"
+        ],
+        "notes": "A failed TXV can often be confirmed by abnormal pressure/temperature readings and may require replacement.",
+        "evidence_snippets": [
+          "A malfunctioning TXV can starve or flood the evaporator. In some cases, liquid refrigerant may flood back to the compressor (slugging) if the expansion device overfeeds:contentReference[oaicite:3]{index=3}."
+        ],
+        "source_ids": [
+          "CARRIER_DIRTY_COIL_2018"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.filter_drier_or_capillary_tube_restriction",
+        "level_1_category": "Refrigerant circuit problem",
+        "level_2_subcategory": "Flow restriction",
+        "level_3_component": "Filter/drier",
+        "general_diagnostic_name": "Refrigerant flow issue",
+        "specific_diagnostic_name": "Filter drier or capillary tube restriction",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "chiller_ahu_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "window_ac"
+        ],
+        "description": "A restriction in the liquid line (often at the filter-drier or in a capillary tube) is impeding refrigerant flow.",
+        "typical_effect_on_operation": "Starved evaporator (low suction pressure, poor cooling) and risk of compressor overheating due to lost cooling effect. Potential freezing before the restriction.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Debris or desiccant from the filter-drier clogging the line",
+          "Solder or braze flux plugging a cap tube",
+          "Moisture entering system and freezing at the metering device"
+        ],
+        "canonical_symptoms": [
+          "Low suction pressure, high superheat (underfeeding evaporator)",
+          "Frost or ice buildup right before the restriction point",
+          "Compressor runs hot due to lack of cooling/refrigerant flow"
+        ],
+        "technician_observation_phrases": [
+          "significant pressure drop across filter drier",
+          "temperature drop (subcooling) noted before TXV/cap tube inlet"
+        ],
+        "notes": "Capillary tubes are found in many small HVAC units (window/portable ACs, some PTACs, small refrigerant circuits). Filter-driers are in almost all systems to catch debris/moisture, but if saturated or clogged can cause a bottleneck.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.compressor_not_starting_electrical_problem",
+        "level_1_category": "Refrigerant circuit problem",
+        "level_2_subcategory": "Compressor issue",
+        "level_3_component": "Compressor",
+        "general_diagnostic_name": "Compressor electrical issue",
+        "specific_diagnostic_name": "Compressor not starting (electrical problem)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "vrf_system",
+          "chiller_ahu_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "window_ac"
+        ],
+        "description": "The compressor fails to start due to an electrical issue (e.g., failed start capacitor, faulty start relay/contactor, or open motor windings).",
+        "typical_effect_on_operation": "No cooling (or heating in heat pump mode). The outdoor unit might hum or click but the compressor does not run, causing rapid cycling on protection or simply no refrigeration effect.",
+        "severity": "high",
+        "common_root_causes": [
+          "Failed start capacitor or start-assist component",
+          "Burned-out compressor windings (electrically open or shorted)",
+          "Stuck or open compressor contactor/relay",
+          "Voltage supply problem preventing motor start (low voltage, phase loss)"
+        ],
+        "canonical_symptoms": [
+          "Outdoor unit hums but no compressor sound",
+          "Lights dim (voltage drop) on compressor start attempt, then it cuts out",
+          "Thermal overload trips after failed start attempts"
+        ],
+        "technician_observation_phrases": [
+          "compressor attempts to start but draws locked rotor amps",
+          "no current draw to compressor (open windings or open circuit)",
+          "burnt electrical odor near compressor terminals"
+        ],
+        "notes": "Electrical 'no-start' issues often overlap with diagnostics in the Electrical category (capacitor failure, contactor failure, etc.), but this item groups them as they specifically prevent compressor start.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.compressor_internal_failure_mechanical_valve",
+        "level_1_category": "Refrigerant circuit problem",
+        "level_2_subcategory": "Compressor issue",
+        "level_3_component": "Compressor",
+        "general_diagnostic_name": "Compressor mechanical failure",
+        "specific_diagnostic_name": "Compressor internal failure (mechanical or valves)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "vrf_system",
+          "chiller_ahu_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "window_ac"
+        ],
+        "description": "The compressor runs but has internal mechanical damage or leaking/broken valves, so it cannot pump effectively.",
+        "typical_effect_on_operation": "Poor or no pressure differential. Little to no cooling (compressor might run very quietly or very noisily). High amp draw if seized, or normal amps but no refrigeration effect if valves failed.",
+        "severity": "high",
+        "common_root_causes": [
+          "Reed or scroll valves in compressor broken or not sealing (from wear or liquid slugging)",
+          "Mechanical seizure or damage to pistons/scroll elements",
+          "Loss of compression due to blown internal gaskets or bypass (compressor 'blow-by')"
+        ],
+        "canonical_symptoms": [
+          "Compressor runs but cooling is negligible",
+          "Suction and discharge pressures equalize or don't move much",
+          "Compressor perhaps unusually quiet (if not pumping) or clattering (broken parts)"
+        ],
+        "technician_observation_phrases": [
+          "compressor amperage lower than normal (not doing work)",
+          "no pressure rise from compressor discharge",
+          "suction stays at atmosphere or doesn’t drop when compressor runs"
+        ],
+        "notes": "Internal compressor failures often require compressor replacement. Valve issues in reciprocating compressors or scrolls can sometimes be diagnosed by symptoms like very low head pressure while running.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.reversing_valve_stuck_or_leaking",
+        "level_1_category": "Refrigerant circuit problem",
+        "level_2_subcategory": "Compressor issue",
+        "level_3_component": "Reversing valve",
+        "general_diagnostic_name": "Heat pump mode switching issue",
+        "specific_diagnostic_name": "Reversing valve stuck or leaking",
+        "system_types": [
+          "residential_heat_pump",
+          "vrf_system",
+          "commercial_rtu",
+          "ductless_mini_split",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump"
+        ],
+        "description": "In a heat pump, the reversing valve is not switching or sealing properly, so the system may get locked in one mode or have reduced capacity.",
+        "typical_effect_on_operation": "Heat pump might be stuck in heating or cooling mode regardless of thermostat call, or simultaneously partially in both (if valve leaks between ports). This leads to very poor performance.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Solenoid coil failure (valve not shifting)",
+          "Valve piston stuck due to debris or damage",
+          "Internal leakage past valve slide (valve wear or damage)"
+        ],
+        "canonical_symptoms": [
+          "Heat pump only cools (or only heats) even when opposite mode is called",
+          "Outdoor unit frostss up heavily in heat mode (valve stuck in cool mode so no proper defrost)",
+          "High discharge/suction pressures simultaneously (if valve partially leaking between sides)"
+        ],
+        "technician_observation_phrases": [
+          "reversing valve does not respond to 24V change",
+          "pressure readings indicate mixing of high and low sides"
+        ],
+        "notes": "A stuck reversing valve often requires replacement. Sometimes a firm tap can free a stuck valve piston, but recurrence is likely. Also ensure the solenoid coil is energizing as expected (could be an electrical issue rather than mechanical valve issue).",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.compressor_short_cycling",
+        "level_1_category": "Refrigerant circuit problem",
+        "level_2_subcategory": "Compressor issue",
+        "level_3_component": "Compressor",
+        "general_diagnostic_name": "Compressor short cycling",
+        "specific_diagnostic_name": "Compressor short-cycles (rapid on/off)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "vrf_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "window_ac",
+          "chiller_ahu_system"
+        ],
+        "description": "The compressor turns on and off too frequently in short intervals, never running long enough per cycle. This can be due to control issues or system oversizing.",
+        "typical_effect_on_operation": "Inefficient operation, potential equipment stress. The area may not be properly dehumidified (in cooling) due to short run times. Repeated short cycles can overheat the compressor or damage starter components.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "HVAC system oversized for load (satisfies thermostat too quickly)",
+          "Thermostat or control hysteresis too tight or malfunctioning (causing rapid cycles)",
+          "High pressure cut-out or other protection kicking in prematurely and resetting (false safety trips)",
+          "Refrigerant charge issues causing abnormal pressure swings"
+        ],
+        "canonical_symptoms": [
+          "AC cools quickly then shuts off, only to restart again after a brief period",
+          "Notable frequent clicking or compressor startup sound every few minutes",
+          "Humidity remains high (if cooling) despite cooling cycles"
+        ],
+        "technician_observation_phrases": [
+          "compressor cycle time observed < 5 minutes",
+          "unit cycling off on high pressure (then restarting after reset)"
+        ],
+        "notes": "Short cycling is often a symptom of other issues (oversizing, sensor placement, pressure trips). It can significantly reduce compressor life due to excessive start/stop cycles and oil not returning properly.",
+        "evidence_snippets": [
+          "Short compressor run times can lead to inadequate dehumidification as the system doesn't run long enough to remove moisture:contentReference[oaicite:4]{index=4}."
+        ],
+        "source_ids": [
+          "DOE_HVAC_GUIDE_2010"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.clogged_dirty_air_filter",
+        "level_1_category": "Airflow problem",
+        "level_2_subcategory": "Indoor airflow",
+        "level_3_component": "Air filter",
+        "general_diagnostic_name": "Low indoor airflow",
+        "specific_diagnostic_name": "Clogged or dirty air filter",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "vrf_system",
+          "window_ac",
+          "ductless_mini_split"
+        ],
+        "description": "The HVAC system's air filter is loaded with dirt and debris, reducing airflow through the indoor unit.",
+        "typical_effect_on_operation": "Reduced airflow leads to poor cooling/heating, potential freezing of the evaporator coil (in cooling mode), and stress on the blower. Energy efficiency drops and comfort is affected.",
+        "severity": "low",
+        "common_root_causes": [
+          "Lack of maintenance (filter not replaced/cleaned)",
+          "High dust environment causing rapid clogging",
+          "Improper filter type (too restrictive) getting clogged quickly"
+        ],
+        "canonical_symptoms": [
+          "Weak airflow from vents",
+          "Rooms taking much longer to reach temperature",
+          "Evaporator coil found to be icing up (in cooling mode) due to low airflow"
+        ],
+        "technician_observation_phrases": [
+          "filter extremely dirty, caked with dust",
+          "significant pressure drop across filter, blower overheating"
+        ],
+        "notes": "This is one of the most common and easily fixable issues. Many 'no cooling' or 'low airflow' service calls are solved by simply replacing a clogged filter.",
+        "evidence_snippets": [
+          "If the air filter is clogged, airflow is impeded, leading to poor cooling and potential icing of the coil:contentReference[oaicite:5]{index=5}."
+        ],
+        "source_ids": [
+          "CARRIER_AC_NOT_COOLING_2025"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.dirty_or_clogged_evaporator_coil",
+        "level_1_category": "Airflow problem",
+        "level_2_subcategory": "Indoor airflow",
+        "level_3_component": "Evaporator coil",
+        "general_diagnostic_name": "Low indoor airflow",
+        "specific_diagnostic_name": "Dirty or clogged evaporator coil",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "vrf_system",
+          "window_ac",
+          "ductless_mini_split"
+        ],
+        "description": "The indoor evaporator coil is fouled with dust, dirt, or biological growth, reducing heat transfer and airflow.",
+        "typical_effect_on_operation": "Cooling capacity drops, airflow is reduced (as the coil acts like a clogged filter), and the coil may freeze due to inadequate warm air passing over it. Efficiency plummets and compressor may overheat.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Extended operation with a missing or very dirty filter allowed dust to coat the coil",
+          "Moist coil catching and growing mold/algae over time (especially if filter maintenance is poor)",
+          "Smoking or heavy particulate environment causing sticky residue on coil fins"
+        ],
+        "canonical_symptoms": [
+          "Visible dirt/mat on the coil face, blocking fins",
+          "Weak airflow even with a new filter",
+          "Cooling performance severely diminished; coil potentially icing"
+        ],
+        "technician_observation_phrases": [
+          "indoor coil fins loaded with dirt/debris",
+          "significant drop in air temperature across coil along with frost observed"
+        ],
+        "notes": "Cleaning a dirty evaporator often requires professional service (coil cleaning solutions or removal in severe cases). Regular filter changes prevent most coil fouling.",
+        "evidence_snippets": [
+          "A dirty evaporator coil impedes airflow and heat transfer, often causing loss of capacity and possibly ice buildup if the dirt is severe:contentReference[oaicite:6]{index=6}."
+        ],
+        "source_ids": [
+          "DOE_HVAC_MAINTENANCE_2020"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.blower_motor_failure_or_fan_not_running",
+        "level_1_category": "Airflow problem",
+        "level_2_subcategory": "Indoor airflow",
+        "level_3_component": "Blower",
+        "general_diagnostic_name": "No indoor airflow",
+        "specific_diagnostic_name": "Blower motor failure or fan not running",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "vrf_system",
+          "ductless_mini_split"
+        ],
+        "description": "The indoor blower (air handler/furnace fan) is not operational, meaning no air is being circulated through the system.",
+        "typical_effect_on_operation": "No airflow distribution. In cooling, the coil may freeze into a block of ice due to zero air movement, and no cooling reaches the space. In heating (furnace or strips), heat may build up and trip safety limits. The system effectively provides no conditioning.",
+        "severity": "high",
+        "common_root_causes": [
+          "Blower motor burned out or seized",
+          "Blower relay/contactor failed (no power to motor)",
+          "Control failure or thermostat fan call not energizing motor",
+          "Broken fan belt (if belt-driven blower in some older systems)"
+        ],
+        "canonical_symptoms": [
+          "No air coming from vents while system is on",
+          "In cooling, supply plenum/coil frosting and compressor short-cycling (or tripping on pressure limit)",
+          "In heating, furnace cycling off on high limit (no airflow to carry heat away)"
+        ],
+        "technician_observation_phrases": [
+          "indoor fan motor not spinning",
+          "no amp draw on blower circuit when it should be running",
+          "blower capacitor tested and found failed"
+        ],
+        "notes": "If the blower isn't running, the root cause could be mechanical (motor, belt) or electrical (capacitor, relay, board). Many modern systems will shut down the compressor via controls if no indoor fan is detected to prevent icing.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.significant_duct_leakage_or_disconnection",
+        "level_1_category": "Airflow problem",
+        "level_2_subcategory": "Indoor airflow",
+        "level_3_component": "Ducts",
+        "general_diagnostic_name": "Low indoor airflow",
+        "specific_diagnostic_name": "Significant duct leakage or disconnection",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "vrf_system"
+        ],
+        "description": "Major leaks or a disconnected duct in the air distribution system are causing much of the air to not reach the intended space.",
+        "typical_effect_on_operation": "Severe loss of conditioned air (blown into attic, crawlspace, etc. instead of rooms). Some rooms or zones get little to no airflow. The system runs longer and struggles to reach setpoint. Energy is wasted conditioning unintended areas.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Disconnected duct (e.g., flexible duct fallen off plenum or torn)",
+          "Large gaps or holes in ductwork (animals, construction damage, corrosion in metal ducts)",
+          "Poorly sealed duct joints allowing bulk leakage"
+        ],
+        "canonical_symptoms": [
+          "Certain vents have no or very weak airflow",
+          "Excessive dust in the home (if return leaks are sucking dusty air)",
+          "High energy bills and uneven temperatures across rooms"
+        ],
+        "technician_observation_phrases": [
+          "found main trunk duct completely separated",
+          "felt air blasting into attic from supply duct leak"
+        ],
+        "notes": "Duct leakage can account for significant efficiency losses. According to studies, duct systems can leak 10-20% of the air flow on average if not sealed:contentReference[oaicite:94]{index=94}.",
+        "evidence_snippets": [
+          "Researchers at LBNL found that duct systems leak on average about 10% of the supply air and 12% of the return air in typical homes, indicating significant potential losses if ducts are not sealed:contentReference[oaicite:95]{index=95}."
+        ],
+        "source_ids": [
+          "LBNL_DUCT_LEAKAGE_STUDY_2000"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.undersized_or_blocked_ducts_registers",
+        "level_1_category": "Airflow problem",
+        "level_2_subcategory": "Indoor airflow",
+        "level_3_component": "Ducts",
+        "general_diagnostic_name": "Low indoor airflow",
+        "specific_diagnostic_name": "Undersized or blocked ducts/registers",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "vrf_system"
+        ],
+        "description": "The ductwork or vents are too small or obstructed, limiting airflow delivery to the space.",
+        "typical_effect_on_operation": "High static pressure in ducts, low airflow from vents. Equipment may run inefficiently due to the airflow restriction (coil freeze or furnace overheating similar to a dirty filter scenario). Comfort is poor in affected areas.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Original duct design inadequate (undersized ducts for the airflow required)",
+          "Many vents closed or blocked by furniture/debris",
+          "Crushed or kinked flex duct reducing cross-section"
+        ],
+        "canonical_symptoms": [
+          "Whistling or whooshing noise from ducts (sign of high static pressure)",
+          "Certain rooms always uncomfortable due to weak airflow",
+          "HVAC unit possibly shutting off on limits due to low flow (e.g. furnace high limit trip, AC coil freeze-up)"
+        ],
+        "technician_observation_phrases": [
+          "static pressure measured well above design due to undersized duct",
+          "multiple supply registers found closed or covered"
+        ],
+        "notes": "Blocked or undersized ducts often go hand-in-hand with airflow complaints. Furniture or rugs over floor registers can significantly cut off supply air. Also, many older homes have too few or too small returns, choking the system.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.blower_running_wrong_speed_or_clogged_wheel",
+        "level_1_category": "Airflow problem",
+        "level_2_subcategory": "Indoor airflow",
+        "level_3_component": "Blower",
+        "general_diagnostic_name": "Low indoor airflow",
+        "specific_diagnostic_name": "Blower running wrong speed or clogged blower wheel",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "vrf_system",
+          "ductless_mini_split"
+        ],
+        "description": "The indoor blower is not delivering its rated airflow because it is set to an incorrect speed tap, the motor control is configured wrongly, or the blower wheel is dirty or partially blocked.",
+        "typical_effect_on_operation": "Sub-optimal airflow similar to a partially clogged filter: reduced capacity, possible coil icing (if too slow), or insufficient heating output. Efficiency suffers and comfort may be uneven.",
+        "severity": "low",
+        "common_root_causes": [
+          "During installation/servicing, blower speed tap was set incorrectly (e.g., left on low speed)",
+          "ECM blower programmed for wrong airflow or DIP switches mis-set",
+          "Blower wheel caked with dirt or lint, effectively reducing its diameter and air output",
+          "Something stuck in the blower wheel (debris) causing drag"
+        ],
+        "canonical_symptoms": [
+          "Lower than expected airflow and capacity even with a clean filter",
+          "Quiet operation (less air noise) but poor cooling/heating",
+          "Evaporator coil maybe running colder than normal (if airflow too low)"
+        ],
+        "technician_observation_phrases": [
+          "found blower connected to low-speed tap instead of high",
+          "blower wheel coated in dust, significant reduction in blade clearance",
+          "ECM blower CFM setting was incorrect for tonnage"
+        ],
+        "notes": "This issue often comes to light after other causes (filter, coil) are ruled out. Adjusting blower speed or cleaning the wheel can restore proper airflow.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.dirty_or_blocked_condenser_coil",
+        "level_1_category": "Airflow problem",
+        "level_2_subcategory": "Outdoor airflow",
+        "level_3_component": "Condenser coil",
+        "general_diagnostic_name": "Low outdoor airflow",
+        "specific_diagnostic_name": "Dirty or blocked condenser coil",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "chiller_ahu_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "vrf_system",
+          "window_ac"
+        ],
+        "description": "The outdoor condenser coil is coated with dirt or obstructed by debris, impeding the system’s ability to reject heat.",
+        "typical_effect_on_operation": "Elevated head pressures, reduced cooling capacity, longer runtimes, and potential compressor overheating or high-pressure trips on very hot days.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Lack of maintenance (coil not cleaned for years)",
+          "Outdoor debris like cottonwood, leaves, grass clippings clogging fins",
+          "Condenser placed in a location with restricted airflow or recirculating hot air"
+        ],
+        "canonical_symptoms": [
+          "AC cannot keep up on hot days",
+          "High discharge pressure readings",
+          "Condenser unit extremely hot"
+        ],
+        "technician_observation_phrases": [
+          "condenser fins plugged with dirt",
+          "head pressure significantly above normal"
+        ],
+        "notes": "The coil may need to be washed with water or coil cleaner. Homeowners should ensure the area around the condenser is clear of obstructions and clean the coil annually.",
+        "evidence_snippets": [
+          "If the outdoor condenser coil is dirty or clogged, it cannot reject heat effectively, resulting in reduced cooling output and potentially causing the unit to overheat:contentReference[oaicite:11]{index=11}."
+        ],
+        "source_ids": [
+          "CARRIER_AC_NOT_COOLING_2025"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.condenser_fan_motor_failure",
+        "level_1_category": "Airflow problem",
+        "level_2_subcategory": "Outdoor airflow",
+        "level_3_component": "Condenser fan",
+        "general_diagnostic_name": "No/low outdoor airflow",
+        "specific_diagnostic_name": "Condenser fan motor failed",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "chiller_ahu_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "vrf_system",
+          "window_ac"
+        ],
+        "description": "The outdoor fan responsible for drawing air through the condenser coil is not running due to a failed motor or related component, so the condenser has little to no airflow.",
+        "typical_effect_on_operation": "Without the condenser fan, head pressure skyrockets and the compressor will overheat or trip on high pressure, resulting in loss of cooling and potential compressor damage if it continues.",
+        "severity": "high",
+        "common_root_causes": [
+          "Fan motor burnout or seized bearings",
+          "Failed run capacitor for the fan motor",
+          "Broken fan blade or obstruction preventing rotation"
+        ],
+        "canonical_symptoms": [
+          "Outdoor unit runs (compressor hums) but fan isn’t spinning",
+          "AC runs briefly then shuts off (high pressure trip)",
+          "Possible burning smell or the unit is extremely hot to touch"
+        ],
+        "technician_observation_phrases": [
+          "condenser fan not turning even with power applied",
+          "fan motor drawing no current or is shorted to ground"
+        ],
+        "notes": "In some cases, you might see the fan blade twitch or spin slowly if the capacitor is bad. A tech will test the capacitor and motor continuity. This fault requires immediate attention to prevent compressor damage.",
+        "evidence_snippets": [
+          "A telltale sign of a bad capacitor is a humming noise without the fan or compressor actually starting:contentReference[oaicite:12]{index=12}. The motor may try to start and fail."
+        ],
+        "source_ids": [
+          "ZONE_HVAC_COMMON_FAILURES_2023"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.condenser_fan_not_at_full_speed",
+        "level_1_category": "Airflow problem",
+        "level_2_subcategory": "Outdoor airflow",
+        "level_3_component": "Condenser fan",
+        "general_diagnostic_name": "Low outdoor airflow",
+        "specific_diagnostic_name": "Condenser fan running slow (capacitor or bearings)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "chiller_ahu_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "vrf_system",
+          "window_ac"
+        ],
+        "description": "The outdoor fan is running at a reduced speed due to a weak capacitor or mechanical drag (e.g., worn motor bearings), resulting in suboptimal condenser airflow.",
+        "typical_effect_on_operation": "Moderately elevated head pressures and reduced efficiency. The AC may work under light conditions but struggle or trip in high ambient temperatures due to insufficient condenser cooling.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Aging or weak run capacitor not providing full torque",
+          "Motor bearings are worn causing friction",
+          "Voltage supply to motor is low (brownout or wiring issue)"
+        ],
+        "canonical_symptoms": [
+          "Condenser fan needs a push to start spinning",
+          "Fan speed visibly lower than normal (air out of top is weak)",
+          "AC works in cooler weather but overheats/shuts off on very hot days"
+        ],
+        "technician_observation_phrases": [
+          "fan motor amperage higher than normal (drag)",
+          "capacitor capacitance below spec for fan"
+        ],
+        "notes": "Often, replacing the capacitor resolves slow fan issues. If the motor itself is failing (bearings), replacing the motor is needed. Technicians will also ensure the fan blade is properly secured and not rubbing.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.outdoor_unit_obstructed_debris",
+        "level_1_category": "Airflow problem",
+        "level_2_subcategory": "Outdoor airflow",
+        "level_3_component": "Debris",
+        "general_diagnostic_name": "Low outdoor airflow",
+        "specific_diagnostic_name": "Outdoor unit airflow obstructed (debris or cover)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "vrf_system",
+          "window_ac"
+        ],
+        "description": "The condenser’s airflow is impeded by external obstructions such as debris buildup around the unit or an improperly placed cover.",
+        "typical_effect_on_operation": "Similar to a dirty coil: heat can’t be rejected effectively. The system may overheat or have reduced capacity, especially in high outdoor temperatures, potentially tripping high-pressure safety.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Leaves, plastic bags, or other objects blocking condenser intake",
+          "Bushes or structures placed too close to unit",
+          "Condenser left covered or wrapped while running"
+        ],
+        "canonical_symptoms": [
+          "System runs but cooling is weak on hot days",
+          "Head pressure runs higher than normal",
+          "Compressor or discharge line extremely hot"
+        ],
+        "technician_observation_phrases": [
+          "condenser intake almost fully blocked by debris",
+          "found unit operating with weather cover still on"
+        ],
+        "notes": "Simple but important: keep the area around the outdoor unit clear and never operate it with a cover on. Even in winter, if a heat pump is expected to run, any cover must be removed.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.blown_fuse_or_tripped_breaker",
+        "level_1_category": "Electrical or power issue",
+        "level_2_subcategory": "Power supply",
+        "level_3_component": "Electrical supply",
+        "general_diagnostic_name": "Power loss",
+        "specific_diagnostic_name": "Blown fuse or tripped breaker",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "vrf_system",
+          "chiller_ahu_system",
+          "window_ac"
+        ],
+        "description": "The primary power supply to the HVAC system has been interrupted by a blown fuse or a tripped circuit breaker, cutting power to some or all components.",
+        "typical_effect_on_operation": "The system will not run at all (no heating/cooling) until power is restored. In some cases, only certain parts (outdoor unit vs indoor unit) lose power if they are on separate breakers.",
+        "severity": "high",
+        "common_root_causes": [
+          "Electrical short or overload causing overcurrent protection to trip",
+          "Aging or corrosion leading to increased resistance and fuse blow",
+          "Breaker or fuse sized incorrectly or weakened from previous trips"
+        ],
+        "canonical_symptoms": [
+          "HVAC system completely unresponsive (no fan, no compressor)",
+          "Breaker found tripped in electrical panel, or blown fuse at disconnect",
+          "After reset/replacement, system runs briefly then stops again (if underlying issue persists)"
+        ],
+        "technician_observation_phrases": [
+          "main breaker feeding HVAC unit was tripped",
+          "open fuse detected in disconnect",
+          "no 240V at outdoor unit due to blown fuse"
+        ],
+        "notes": "It's critical to identify why a fuse blew or breaker tripped. Common causes are compressor or fan motor shorts, capacitor failures, or wiring issues. Simply replacing the fuse without fixing the cause will lead to a repeat failure.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.main_power_switch_off",
+        "level_1_category": "Electrical or power issue",
+        "level_2_subcategory": "Power supply",
+        "level_3_component": "Electrical supply",
+        "general_diagnostic_name": "Power loss",
+        "specific_diagnostic_name": "Main power switch off (at unit or disconnect)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "residential_furnace",
+          "boiler_hydronic",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "vrf_system",
+          "chiller_ahu_system",
+          "window_ac"
+        ],
+        "description": "The HVAC system’s main power switch (indoor furnace switch or outdoor disconnect) is turned off, so the system has no electrical supply.",
+        "typical_effect_on_operation": "System is completely non-functional. Thermostat commands do nothing. This is often mistaken for a system failure when it’s simply a power switch left off.",
+        "severity": "low",
+        "common_root_causes": [
+          "Switch turned off for maintenance and not turned back on",
+          "Accidental bump or toggle by homeowner or other trades",
+          "In some cases, a safety switch (e.g., condensate pan float) might cut power which can be misinterpreted as 'switch off'"
+        ],
+        "canonical_symptoms": [
+          "Nothing runs at all; no fan, no compressor activity",
+          "Thermostat might be blank if it relies on system transformer",
+          "Upon inspection, disconnect or service switch found in OFF position"
+        ],
+        "technician_observation_phrases": [
+          "furnace service switch was found off",
+          "disconnect at outdoor unit pulled out"
+        ],
+        "notes": "This 'fault' is often resolved by simply restoring power. It’s a reminder to always verify power supply before diving into deeper troubleshooting.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.control_transformer_failure_no_24v",
+        "level_1_category": "Electrical or power issue",
+        "level_2_subcategory": "Power supply",
+        "level_3_component": "Control transformer",
+        "general_diagnostic_name": "Control power issue",
+        "specific_diagnostic_name": "Control transformer failure (no 24V)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic",
+          "water_source_heat_pump",
+          "ground_source_heat_pump"
+        ],
+        "description": "The low-voltage transformer (typically 120V/240V to 24V) has failed or is not powered, so the control circuit (thermostat, relays) has no voltage.",
+        "typical_effect_on_operation": "The thermostat appears dead or HVAC doesn’t respond to any calls. The furnace/air handler control board has no 24V power, so neither heating nor cooling will operate despite high-voltage power being present to the units.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Internal short in control wiring blowing the fuse on the 24V transformer or burning it out",
+          "Transformer coil failure due to age or surge",
+          "Primary power to transformer disconnected (e.g., breaker off or wire loose)",
+          "Fuse on control board (if equipped) blown"
+        ],
+        "canonical_symptoms": [
+          "Thermostat display is blank (if battery-less) or HVAC doesn’t turn on at all",
+          "No 24V AC measured at control board",
+          "Some units have an indicator LED off to show loss of 24V"
+        ],
+        "technician_observation_phrases": [
+          "no 24V present from transformer",
+          "control fuse blown on furnace board"
+        ],
+        "notes": "Many modern systems include a small 3-5 amp fuse on the 24V circuit to protect the transformer. If a short occurs (e.g. thermostat wire shorted), this fuse blows. The 'fix' is replacing the fuse or transformer *and* correcting the short circuit that caused the failure.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.failed_start_or_run_capacitor",
+        "level_1_category": "Electrical or power issue",
+        "level_2_subcategory": "Component electrical",
+        "level_3_component": "Capacitor",
+        "general_diagnostic_name": "Electrical fault",
+        "specific_diagnostic_name": "Failed start or run capacitor",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "residential_furnace",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "window_ac"
+        ],
+        "description": "One of the capacitors (start or run) that provide the necessary phase shift or torque boost to motors (compressor or fan) has failed (open circuit, shorted, or weakened beyond tolerance).",
+        "typical_effect_on_operation": "Depending on which capacitor failed: the compressor may not start (just hums and trips on overload), or an outdoor/indoor fan may not start or run at full speed. Often results in no cooling or intermittent operation of affected motor.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Electrolytic capacitor aging/drying out (capacitance loss)",
+          "Power surge damaging the capacitor",
+          "Prolonged high temperature operation (e.g. outdoor capacitors in hot climates) causing capacitor failure",
+          "Manufacturing defect or low-quality capacitor"
+        ],
+        "canonical_symptoms": [
+          "Compressor tries to start (dim lights, hum) but shuts off – often indicative of failed compressor start capacitor",
+          "Outdoor fan blades not spinning on their own – sometimes a push gets them going (bad fan run capacitor)",
+          "Bulged or leaking capacitor observed on inspection"
+        ],
+        "technician_observation_phrases": [
+          "capacitor measured microfarads well below spec",
+          "start cap bulged at top, oil leakage visible",
+          "replaced compressor capacitor, unit then started normally"
+        ],
+        "notes": "Capacitor failure is one of the most common HVAC issues, especially in warm regions. Replacements should match the exact microfarad rating and equal or higher voltage rating. After replacement, monitor motor current draw to ensure no other issues caused the capacitor to fail.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.compressor_or_fan_contactor_failed",
+        "level_1_category": "Electrical or power issue",
+        "level_2_subcategory": "Component electrical",
+        "level_3_component": "Contactor/Relay",
+        "general_diagnostic_name": "Electrical fault",
+        "specific_diagnostic_name": "Compressor or fan contactor/relay failed",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump"
+        ],
+        "description": "The high-voltage contactor (relay) that controls power to the compressor or fan motor is not closing (or not opening) properly. It may be burned, stuck, or coil has failed.",
+        "typical_effect_on_operation": "If the contactor fails to close, the compressor or fan will not energize at all (no cooling). If it sticks closed, that component may run continuously even when not commanded (e.g., outdoor unit stays on). Either scenario can cause performance issues or equipment damage.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Contacts pitted or burned from wear, preventing good electrical connection",
+          "Contactor coil burned out (no magnetic pull-in)",
+          "Mechanical binding of the contactor armature",
+          "Insects/debris lodged in contactor (this happens in outdoor units on occasion)"
+        ],
+        "canonical_symptoms": [
+          "Compressor does not run even though 24V control signal is present (contactor not closing)",
+          "Outdoor unit continues running even after thermostat satisfied (contactor welded shut)",
+          "Burn marks or melted plastic around contactor",
+          "Manual push of contactor engages unit (indicating coil might be bad)"
+        ],
+        "technician_observation_phrases": [
+          "contactor coil open or no continuity",
+          "contacts physically welded or burned"
+        ],
+        "notes": "Contactors are relatively inexpensive and often replaced during repairs. A telltale of a stuck contactor is an outdoor unit that runs even when thermostat is off (stuck closed) or one that doesn’t run even though 24V is present at the coil (stuck open).",
+        "evidence_snippets": [
+          "A failed contactor can prevent the outdoor unit from turning on at all, or cause it to stick on. For example, a contactor stuck open means the compressor and fan never get power:contentReference[oaicite:16]{index=16}."
+        ],
+        "source_ids": [
+          "ZONE_HVAC_COMMON_FAILURES_2023"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.loose_or_corroded_wiring_connection",
+        "level_1_category": "Electrical or power issue",
+        "level_2_subcategory": "Component electrical",
+        "level_3_component": "Wiring",
+        "general_diagnostic_name": "Electrical fault",
+        "specific_diagnostic_name": "Loose or corroded wiring connection",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "vrf_system",
+          "chiller_ahu_system",
+          "window_ac"
+        ],
+        "description": "One or more electrical connections in the HVAC system are loose, oxidized, or otherwise not making good contact, causing intermittent operation or failure of components due to voltage drops or open circuits.",
+        "typical_effect_on_operation": "The effect can vary from intermittent shut-offs and failures to start, to components (like motors) receiving lower voltage and overheating. It can manifest as random system outages or unreliable performance.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Vibration causing screw terminals to loosen over time",
+          "Corrosion or oxidation on terminals (especially in humid or coastal environments)",
+          "Rodent damage partially severing a conductor"
+        ],
+        "canonical_symptoms": [
+          "System works sometimes and then doesn’t, seemingly at random",
+          "Visible charring or discoloration at a connector",
+          "Wiggling a wire or tapping a component causes system to cut in/out"
+        ],
+        "technician_observation_phrases": [
+          "voltage drop measured across a connector",
+          "burnt or loose spade terminal observed"
+        ],
+        "notes": "Electrical connection issues often require careful inspection of wires at the contactor, circuit board, and other components. Tightening screws and cleaning contacts can resolve many of these issues.",
+        "evidence_snippets": [
+          "Worn or damaged wires and loose connections can cause the system to lose power or work intermittently:contentReference[oaicite:17]{index=17}."
+        ],
+        "source_ids": [
+          "BLUEDOT_TROUBLESHOOT_GUIDE_2021"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.control_board_failure_or_fault",
+        "level_1_category": "Electrical or power issue",
+        "level_2_subcategory": "Control board",
+        "level_3_component": "PCB",
+        "general_diagnostic_name": "Control failure",
+        "specific_diagnostic_name": "Control board failure or fault",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "vrf_system",
+          "boiler_hydronic",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "ductless_mini_split",
+          "chiller_ahu_system"
+        ],
+        "description": "The system’s control board (or furnace/air handler integrated circuit board) has malfunctioned due to component failure or firmware issues.",
+        "typical_effect_on_operation": "The HVAC system may not operate at all, or may behave erratically (e.g., blower or outdoor unit not being commanded on, or stuck on). Diagnostic LEDs might indicate a board fault. Essentially, the 'brain' isn’t sending proper signals.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Electrical surge or lightning strike damaging circuits",
+          "Transformer over-voltage or short sending high voltage to low-voltage circuits",
+          "Component failure on the board (e.g., relay, resistor, solder joint) due to age or heat"
+        ],
+        "canonical_symptoms": [
+          "No response from system even though high voltage power is present (no outputs being energized)",
+          "Furnace blower or other component stuck ON continuously (relay welded on board)",
+          "Diagnostic LED on board showing error code or not lighting at all"
+        ],
+        "technician_observation_phrases": [
+          "no 24V output from control board despite correct input",
+          "visible burn marks on circuit board"
+        ],
+        "notes": "Replacing the control board is often the solution after verifying that all sensors and peripheral devices are functional. It's also critical to ensure the root cause (like a short that fried the board) is resolved to avoid repeat failure.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.voltage_supply_problem_brownout_or_phase_loss",
+        "level_1_category": "Electrical or power issue",
+        "level_2_subcategory": "Power supply",
+        "level_3_component": "Voltage",
+        "general_diagnostic_name": "Electrical issue",
+        "specific_diagnostic_name": "Voltage supply problem (brownout or phase loss)",
+        "system_types": [
+          "commercial_rtu",
+          "chiller_ahu_system",
+          "vrf_system",
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "boiler_hydronic",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "window_ac"
+        ],
+        "description": "The HVAC equipment is experiencing incorrect supply voltage: either consistently low voltage (brownout) or the loss of one phase in a three-phase system, leading to improper motor operation.",
+        "typical_effect_on_operation": "Motors (compressors, fans) may fail to start or run very hot due to undervoltage or missing phase. The system may trip overload protectors or not operate at full capacity. Severe phase imbalance can quickly burn out three-phase motors.",
+        "severity": "high",
+        "common_root_causes": [
+          "Utility brownout during peak load times",
+          "Blown fuse on one leg of a three-phase supply or utility phase outage",
+          "Voltage drop due to undersized wiring or excessive distance"
+        ],
+        "canonical_symptoms": [
+          "Compressor hums loudly but doesn't start (in low voltage conditions)",
+          "Three-phase motor vibrating or not running (single-phasing)",
+          "Lights dimming in the building when AC tries to start"
+        ],
+        "technician_observation_phrases": [
+          "voltage measured significantly below nominal",
+          "one phase of power absent at unit"
+        ],
+        "notes": "Many commercial units have phase monitors that will shut the system off in event of phase loss or reversal. In residential settings, brownouts can cause relays to chatter and motors to overheat. The power company or an electrician may need to address supply issues.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.blower_or_fan_motor_shorted_burned_out",
+        "level_1_category": "Electrical or power issue",
+        "level_2_subcategory": "Component electrical",
+        "level_3_component": "Motor",
+        "general_diagnostic_name": "Electrical fault",
+        "specific_diagnostic_name": "Blower or fan motor shorted (burned out)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "vrf_system",
+          "chiller_ahu_system"
+        ],
+        "description": "A motor (either indoor blower or outdoor fan) has electrically failed, either by shorting internally or the winding has opened, causing it not to run and often blowing fuses or tripping breakers.",
+        "typical_effect_on_operation": "The affected fan will not operate at all. If it’s the indoor blower, no airflow; if it’s the outdoor fan, the compressor may trip off on high pressure quickly. A direct short may blow a fuse instantly when the motor circuit is energized.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Motor overheated (e.g., due to overcurrent or lack of maintenance) and insulation failed",
+          "Bearings seized causing motor stall and burnout",
+          "Water ingress into motor windings (shorting it)"
+        ],
+        "canonical_symptoms": [
+          "Associated fan does not run at all (no movement, no sound from motor)",
+          "Breaker trips or fuse blows whenever motor is supposed to turn on",
+          "Burning smell or smoke when motor attempted to start"
+        ],
+        "technician_observation_phrases": [
+          "motor windings show short to ground",
+          "open circuit in motor winding (no continuity)"
+        ],
+        "notes": "Resolution involves replacing the motor. The technician will also verify that the mechanical load (fan blade, blower wheel) turns freely and that the capacitor is good, to ensure the new motor isn't immediately stressed.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.compressor_thermal_overload_trip",
+        "level_1_category": "Electrical or power issue",
+        "level_2_subcategory": "Safety",
+        "level_3_component": "Overload",
+        "general_diagnostic_name": "Electrical fault",
+        "specific_diagnostic_name": "Compressor thermal overload trip",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "vrf_system",
+          "chiller_ahu_system"
+        ],
+        "description": "The compressor’s internal thermal overload protector is tripping because the compressor is running too hot, often due to stressful conditions or another fault.",
+        "typical_effect_on_operation": "The compressor will shut off (or refuse to start) intermittently. Cooling will stop until the compressor cools and the overload resets. This can manifest as the AC working for a short period then the outdoor unit stopping, possibly cycling in this manner.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "High head pressure (dirty condenser, overcharge) causing overheating",
+          "Low charge leading to inadequate motor cooling (in hermetic compressors, refrigerant cools the motor)",
+          "Voltage issues or hard start issues causing long start times and heat buildup"
+        ],
+        "canonical_symptoms": [
+          "AC cools initially then stops cooling as compressor cuts out",
+          "Compressor extremely hot to the touch after shutdown",
+          "System may short-cycle as compressor repeatedly tries and fails once overheated"
+        ],
+        "technician_observation_phrases": [
+          "compressor drawing high amps before tripping",
+          "internal overload open when tested (no continuity until it cools)"
+        ],
+        "notes": "A thermal overload trip is a protective measure. The key is identifying why the compressor overheated: could be dirty coils, loss of charge, or something like a failing start capacitor causing long run times at high amps.",
+        "evidence_snippets": [
+          "An undercharge of refrigerant can cause the compressor to overheat and no longer operate properly (e.g. short cycles on low pressure cut-out or runs continuously):contentReference[oaicite:18]{index=18}."
+        ],
+        "source_ids": [
+          "COMPRESSORS_UNLIMITED_BLOG_2019"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.thermostat_set_incorrectly_mode_or_temp",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "Thermostat",
+        "level_3_component": "Settings",
+        "general_diagnostic_name": "Thermostat setting issue",
+        "specific_diagnostic_name": "Thermostat set incorrectly (mode or temperature)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The thermostat was not set to the desired mode or temperature for conditioning (e.g., it might be set to heating or off when cooling is expected, or the setpoint is misadjusted).",
+        "typical_effect_on_operation": "The HVAC system does not run in the expected mode. For example, cooling won’t come on if thermostat is in heat mode, or the system remains off if the setpoint isn’t reached due to a mis-set temperature.",
+        "severity": "low",
+        "common_root_causes": [
+          "User error (thermostat accidentally set to the wrong mode or schedule changes)",
+          "Children or other occupants changing settings",
+          "Thermostat defaulting to an energy-saving mode that wasn’t noticed"
+        ],
+        "canonical_symptoms": [
+          "System not cooling or heating when expected, with thermostat reading a mode that doesn’t call for it",
+          "Thermostat shows the wrong mode (e.g. 'heat' instead of 'cool') or an unreasonably high/low setpoint",
+          "HVAC system does nothing because it’s actually turned off at the thermostat"
+        ],
+        "technician_observation_phrases": [
+          "thermostat found set to off or incorrect mode",
+          "setpoint was not appropriate for initiating a call"
+        ],
+        "notes": "This is a very common non-problem: always double-check the thermostat settings first. Simply switching to the correct mode or adjusting the setpoint resolves the issue.",
+        "evidence_snippets": [
+          "Something as simple as incorrect thermostat settings can mimic a system problem. It's important to ensure the thermostat is actually calling for cooling or heating as appropriate:contentReference[oaicite:19]{index=19}."
+        ],
+        "source_ids": [
+          "BLUEDOT_TROUBLESHOOT_GUIDE_2021"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.thermostat_unresponsive_or_malfunctioning",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "Thermostat",
+        "level_3_component": "Thermostat",
+        "general_diagnostic_name": "Thermostat failure",
+        "specific_diagnostic_name": "Thermostat unresponsive or malfunctioning",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The thermostat is not functioning properly – it may not register the correct temperature or its controls may not engage the HVAC system, despite being set correctly.",
+        "typical_effect_on_operation": "The HVAC system may not turn on or off as commanded. This can lead to no heating/cooling or continuous running. Comfort is impacted because the control point of the system is not behaving as intended.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Internal failure of thermostat electronics or sensors",
+          "Software glitch or firmware issue in smart thermostats",
+          "Calibration drift causing inaccurate temperature readings"
+        ],
+        "canonical_symptoms": [
+          "Thermostat display on but HVAC does not respond to changes",
+          "Thermostat reading different from actual room temperature by a significant margin",
+          "System short cycles or runs too long due to faulty thermostat signals"
+        ],
+        "technician_observation_phrases": [
+          "thermostat sensor reading off compared to actual temperature",
+          "24V call signal not being sent from thermostat when expected"
+        ],
+        "notes": "Replacing the thermostat is a straightforward fix if it's determined to be faulty. For smart thermostats, sometimes a reset or firmware update can resolve issues if it's software-related.",
+        "evidence_snippets": [
+          "An incorrect temperature reading can cause your system to run too much or not enough, leading to discomfort and wasted energy:contentReference[oaicite:20]{index=20}."
+        ],
+        "source_ids": [
+          "ZONE_HVAC_COMMON_FAILURES_2023"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.thermostat_batteries_dead_or_no_power",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "Thermostat",
+        "level_3_component": "Thermostat",
+        "general_diagnostic_name": "Thermostat power issue",
+        "specific_diagnostic_name": "Thermostat batteries dead or no power",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The thermostat has lost power, either due to drained batteries (in battery-powered models) or loss of 24V supply (in hard-wired models), causing it to go blank or offline.",
+        "typical_effect_on_operation": "The HVAC system will not receive any commands to turn on or off. Essentially, the system may remain off because the 'brain' (thermostat) isn't functioning. If the thermostat is blank, it’s obvious; if it's just not powered enough to close relays, it quietly fails to control.",
+        "severity": "low",
+        "common_root_causes": [
+          "Batteries in thermostat depleted",
+          "Blown fuse or transformer issue removing 24V power",
+          "C-wire not connected on a smart thermostat that lost battery backup"
+        ],
+        "canonical_symptoms": [
+          "Thermostat display is blank or unresponsive",
+          "No heating/cooling even if you try to adjust the thermostat",
+          "Replacing thermostat batteries immediately restores display and control"
+        ],
+        "technician_observation_phrases": [
+          "thermostat came back on after battery replacement",
+          "no 24V present at thermostat terminals"
+        ],
+        "notes": "Always check if the thermostat has power during a no-heat or no-cool call. Many service calls are resolved by simply replacing thermostat batteries or flipping a furnace service switch back on.",
+        "evidence_snippets": [
+          "If a digital thermostat goes blank, the HVAC system won't run. Often this is due to dead batteries or a loss of 24V power to the thermostat:contentReference[oaicite:21]{index=21}."
+        ],
+        "source_ids": [
+          "ZONE_HVAC_COMMON_FAILURES_2023"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.thermostat_wiring_misconfigured_or_loose",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "Thermostat",
+        "level_3_component": "Wiring",
+        "general_diagnostic_name": "Thermostat wiring issue",
+        "specific_diagnostic_name": "Thermostat wiring misconfigured (incorrect or loose)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The low-voltage wiring between the thermostat and HVAC equipment is incorrect (miswired) or a connection has come loose/undone, so signals are not properly reaching the equipment or are activating the wrong functions.",
+        "typical_effect_on_operation": "Possibly no response from HVAC to thermostat, or wrong equipment turning on. For example, the heat might come on when calling for cool (common if O/B reversing valve wire mixed up), or nothing happens at all due to an open circuit.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Incorrect thermostat hookup (e.g., after thermostat replacement or new system install)",
+          "A wire has come off a terminal screw due to poor tightening",
+          "Physical damage to thermostat cable (rodent chewing or during renovations)"
+        ],
+        "canonical_symptoms": [
+          "Thermostat calls but HVAC doesn’t engage (open circuit)",
+          "Heat pump cools in heat mode or vice versa due to miswired O/B",
+          "Blower runs continuously or not at all if G fan wire misplaced"
+        ],
+        "technician_observation_phrases": [
+          "thermostat wiring found misconnected",
+          "loose connection on Y terminal causing intermittent cooling"
+        ],
+        "notes": "Labeling wires during stat or equipment changes is critical. Miswiring can lead to very confusing symptoms. Verifying continuity on each control circuit and reference to wiring diagrams helps resolve these issues.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.cooling_disabled_or_heat_on",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "System control",
+        "level_3_component": "Mode control",
+        "general_diagnostic_name": "Thermostat setting issue",
+        "specific_diagnostic_name": "Cooling disabled or heat on inadvertently",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump"
+        ],
+        "description": "Cooling mode is not actually running because either the system is intentionally or unintentionally in the wrong mode (heat or off), or an auxiliary heat source is running concurrently, causing warm air output even when cooling is expected.",
+        "typical_effect_on_operation": "The user experiences warm air from the vents despite expecting cooling. Essentially, cooling is not active - either because it's turned off at controls or because heat is counteracting it.",
+        "severity": "low",
+        "common_root_causes": [
+          "Thermostat mistakenly left in heat mode or turned off",
+          "Heat pump wired incorrectly (O/B reversal, causing heat mode when calling cool)",
+          "Auxiliary electric heat stuck on due to a relay fault, overpowering cooling"
+        ],
+        "canonical_symptoms": [
+          "AC is blowing hot/warm air instead of cold",
+          "No cooling effect though system seems to be on",
+          "Thermostat mode found set to heating or fan-only by accident"
+        ],
+        "technician_observation_phrases": [
+          "system found operating in heat mode during cooling call",
+          "aux heat energized simultaneously with cooling"
+        ],
+        "notes": "Often the solution is simply to switch the thermostat to the correct mode. In case of wiring issues (like a heat pump O/B issue), a quick rewiring fixes the reversed operation.",
+        "evidence_snippets": [
+          "Are your thermostat settings correct? If it's accidentally set to heat or the fan-only setting, the AC won’t cool:contentReference[oaicite:23]{index=23}."
+        ],
+        "source_ids": [
+          "BLUEDOT_TROUBLESHOOT_GUIDE_2021"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.thermostat_scheduling_issue",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "System control",
+        "level_3_component": "Scheduling",
+        "general_diagnostic_name": "Control scheduling issue",
+        "specific_diagnostic_name": "Thermostat or control schedule causing off periods",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The thermostat’s programmed schedule or smart features are setting the system in a way that conflicts with occupant comfort (e.g., setting the temperature higher during certain periods, making it seem like the HVAC isn’t working).",
+        "typical_effect_on_operation": "The HVAC might not run when the user expects it to, due to programmed setbacks or off cycles, causing discomfort or the impression of a malfunction. Alternatively, it might turn off early or not reach setpoint due to an energy-saving schedule.",
+        "severity": "low",
+        "common_root_causes": [
+          "Thermostat schedule programmed with economy set-backs (e.g., 85°F when not home)",
+          "Smart thermostat auto-away feature pausing conditioning",
+          "Day-of-week program mis-set (e.g., thinking it's a different day)"
+        ],
+        "canonical_symptoms": [
+          "System doesn’t come on at usual time or turns off at certain times unexpectedly",
+          "House is uncomfortable until a certain preset time passes or until manual override",
+          "Thermostat indicates it’s in a scheduled setback or hold"
+        ],
+        "technician_observation_phrases": [
+          "thermostat schedule reviewed and found to have setbacks",
+          "system in programmed delay or smart eco-mode"
+        ],
+        "notes": "Educating the homeowner on their thermostat’s schedule or resetting it to a simple, constant setting often solves these “faults,” which are not hardware issues at all.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.zone_damper_or_controller_malfunction",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "Zoning control",
+        "level_3_component": "Zone control",
+        "general_diagnostic_name": "Zone control issue",
+        "specific_diagnostic_name": "Zone damper or zone controller malfunction",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "vrf_system",
+          "chiller_ahu_system"
+        ],
+        "description": "In a multi-zone HVAC system, one or more zone dampers are not operating correctly or the zone control board is failing to send proper signals, resulting in improper airflow to one or more zones.",
+        "typical_effect_on_operation": "One zone may receive no heating/cooling (damper stuck closed) or too much (damper stuck open) regardless of thermostat demand. Overall system balance is disturbed; some areas get uncomfortable while others may overcondition.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Zone damper actuator motor burned out or stuck",
+          "Faulty zone control board or relay not energizing damper",
+          "Thermostat in that zone not communicating with controller"
+        ],
+        "canonical_symptoms": [
+          "A particular zone (room or area) never reaches temperature while others do",
+          "Airflow can be heard in ducts but not delivered to the zone (damper not opening)",
+          "Zone calls for conditioning but equipment does not respond correctly (especially if zone controller logic fails)"
+        ],
+        "technician_observation_phrases": [
+          "voltage not reaching zone actuator when it should",
+          "damper blade observed not moving or stuck"
+        ],
+        "notes": "Zoned systems add complexity. Troubleshooting involves confirming each zone thermostat's call is recognized by the panel and that each damper moves freely when commanded. Manual override levers on dampers can help diagnose if it's an actuator issue vs. control issue.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.communication_failure",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "System control",
+        "level_3_component": "Communication",
+        "general_diagnostic_name": "Control communication issue",
+        "specific_diagnostic_name": "Communication failure (e.g., thermostat to equipment or VRF controllers)",
+        "system_types": [
+          "vrf_system",
+          "commercial_rtu",
+          "residential_split_ac",
+          "residential_heat_pump"
+        ],
+        "description": "A communication bus or link between control components has failed. In VRF or modern systems, this could be the communication between indoor and outdoor units; in a residential context, it could be a communicating thermostat not communicating with the HVAC unit.",
+        "typical_effect_on_operation": "The system might shut down or enter a fault mode if controllers can’t communicate. In VRF, some or all zones might stop conditioning due to lost comms. In communicating thermostat systems, the equipment may not run at all or run in a default mode.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Broken or shorted communication wiring (e.g., RS485 lines in VRF, or ABCD bus in residential communicating systems)",
+          "Firmware incompatibility or error causing loss of communication",
+          "Power outage or surge scrambling communication modules"
+        ],
+        "canonical_symptoms": [
+          "Error codes on equipment indicating communication loss",
+          "Thermostat displaying a communication error or no signal",
+          "Outdoor unit running but indoor units not responding (or vice versa in VRF)"
+        ],
+        "technician_observation_phrases": [
+          "no data exchange detected on comm bus",
+          "thermostat and furnace not communicating on proprietary network"
+        ],
+        "notes": "Communication failures often produce specific error codes. Solutions include checking wiring continuity/polarity on comm lines, cycling power to reset modules, or updating firmware. In some cases a simple wiring misconnection (like reversed polarity on a two-wire comm) is the culprit.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.thermostat_sensor_miscalibrated_or_poor_location",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "Thermostat",
+        "level_3_component": "Sensor",
+        "general_diagnostic_name": "Thermostat sensor issue",
+        "specific_diagnostic_name": "Thermostat sensor miscalibrated or poor location",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The thermostat’s temperature sensor is reading incorrectly or is placed in an area that doesn’t represent the general space (e.g., in direct sunlight, near a supply vent, or otherwise causing false readings).",
+        "typical_effect_on_operation": "The HVAC may overcool or overheat, or not run when it should. For instance, a thermostat in sunlight might think the room is warmer than it is and prematurely shut off cooling, or one near a draft might cause excessive runtime. Comfort is affected and setpoint control is poor.",
+        "severity": "low",
+        "common_root_causes": [
+          "Thermostat mounted on an exterior wall in sun or above a heat source (like a lamp)",
+          "Sensor out of calibration (reading say 5°F high or low)",
+          "Thermostat located in a particularly hot/cold microclimate in the home"
+        ],
+        "canonical_symptoms": [
+          "Thermostat reads satisfied, but room temperature (away from stat) is not at setpoint",
+          "Large discrepancies between thermostat reading and actual room temperature",
+          "HVAC short cycles or runs too long due to false sensor input"
+        ],
+        "technician_observation_phrases": [
+          "thermostat location exposed to direct afternoon sun",
+          "thermostat reading significantly off compared to reference thermometer"
+        ],
+        "notes": "Relocating the thermostat or adjusting its calibration (if possible) resolves these issues. Some thermostats allow offsetting the reading. Ensuring the thermostat is on an interior wall, away from supply vents and sunlight, is key.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.faulty_temperature_sensor",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "System control",
+        "level_3_component": "Temperature sensor",
+        "general_diagnostic_name": "Internal sensor fault",
+        "specific_diagnostic_name": "Faulty temperature sensor in system",
+        "system_types": [
+          "vrf_system",
+          "ductless_mini_split",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "chiller_ahu_system"
+        ],
+        "description": "A temperature sensor within the HVAC system (not the main thermostat) is reading incorrectly or has failed. This could be an evaporator coil sensor, outdoor ambient sensor, water temperature sensor, etc., depending on system type.",
+        "typical_effect_on_operation": "The system may behave improperly: e.g., a bad coil sensor might prevent defrost or cause freezing, a bad outdoor sensor could disable heat pump operation in cold weather, a faulty water temperature sensor could make a chiller or boiler maintain wrong temperatures. Often the system will throw an error code.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Sensor out of calibration or drift due to age",
+          "Sensor wire damaged or connector loose",
+          "Complete failure of thermistor or RTD sensor (open or short circuit)"
+        ],
+        "canonical_symptoms": [
+          "System shows error code for sensor failure",
+          "Heat pump stuck in defrost or not defrosting at all (bad coil thermistor)",
+          "Chiller water too cold or hot because sensor reading is off"
+        ],
+        "technician_observation_phrases": [
+          "indoor unit thermistor readings are erratic",
+          "sensor resistance does not match expected value for temperature"
+        ],
+        "notes": "Replacing the faulty sensor is usually required. In some cases the controls can be temporarily fooled (using a resistor) to verify the diagnosis. Sensor faults are common in advanced systems like VRFs and mini-splits, which rely on multiple electronic sensors for control and protection.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.faulty_pressure_sensor_or_switch",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "System control",
+        "level_3_component": "Pressure sensor",
+        "general_diagnostic_name": "Internal sensor fault",
+        "specific_diagnostic_name": "Faulty pressure sensor or pressure switch",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "vrf_system",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "ductless_mini_split",
+          "packaged_terminal_heat_pump",
+          "chiller_ahu_system"
+        ],
+        "description": "A pressure transducer or mechanical pressure switch in the system is malfunctioning – either giving incorrect readings to the control board or not switching at the designed pressure.",
+        "typical_effect_on_operation": "If a high or low refrigerant pressure switch is faulty (opening too soon or not at all), it can falsely shut the system down or fail to protect it. If a variable system’s pressure transducer is reading wrong, the compressor may speed up or slow down incorrectly, harming performance or safety. The system may lock out if it 'thinks' pressures are out of range.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Mechanical wear or clogging in a pressure switch (e.g., low-pressure switch stuck open even when pressure normal)",
+          "Transducer (sensor) drift or water intrusion in sensor electronics",
+          "Manufacturing defect or damage to sensor wiring"
+        ],
+        "canonical_symptoms": [
+          "System shuts off on pressure fault when actual pressures are normal (false trip)",
+          "System runs at weird capacity or conditions due to inaccurate pressure feedback (in variable systems)",
+          "Error codes related to pressure sensor faults"
+        ],
+        "technician_observation_phrases": [
+          "pressure sensor reading deviates significantly from gauge reading",
+          "high pressure switch continuity test failed despite normal pressure"
+        ],
+        "notes": "Distinguishing a faulty sensor from a real pressure issue is key – technicians will put analog gauges to verify. Once confirmed, replacing the sensor or switch is the fix. Many modern systems have diagnostic codes to indicate sensor plausibility errors (e.g., reading out of expected range).",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.faulty_humidity_sensor",
+        "level_1_category": "Controls / Thermostat issue",
+        "level_2_subcategory": "System control",
+        "level_3_component": "Humidity sensor",
+        "general_diagnostic_name": "Internal sensor fault",
+        "specific_diagnostic_name": "Faulty humidity sensor",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "chiller_ahu_system"
+        ],
+        "description": "A humidity sensor (in a thermostat or separate humidistat/ventilation controller) is providing incorrect readings or has failed. This could be a sensor controlling a whole-house humidifier/dehumidifier or economizer, etc.",
+        "typical_effect_on_operation": "If the sensor reads too high or low, it may cause inappropriate operation: e.g., a dehumidifier running unnecessarily or not running when it should, an economizer letting in humid air when it shouldn’t, or a humidifier over-humidifying or not running at all. Comfort and indoor air quality can be impacted.",
+        "severity": "low",
+        "common_root_causes": [
+          "Sensor element contaminated or damaged by dust/corrosion",
+          "Loss of calibration from age",
+          "Faulty wiring or connections to the humidistat"
+        ],
+        "canonical_symptoms": [
+          "High indoor humidity despite system supposed to control it (sensor not triggering dehumidification)",
+          "Ventilation systems not bringing enough outside air due to false humidity readings",
+          "Humidistat shows constant 99% or 0% (stuck reading)"
+        ],
+        "technician_observation_phrases": [
+          "humidity reading static regardless of actual changes",
+          "humidistat output voltage/current out of spec"
+        ],
+        "notes": "Humidity sensors often need periodic calibration. If one fails, replacement is straightforward. In critical environments, cross-checking with a psychrometer can confirm a sensor fault.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.flame_sensor_dirty_or_failed",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Safety device",
+        "level_3_component": "Flame sensor",
+        "general_diagnostic_name": "Safety fault",
+        "specific_diagnostic_name": "Flame sensor dirty or failed",
+        "system_types": [
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The flame sensor (flame rectification probe) is not detecting the burner flame, usually due to being coated in soot/oxide or because it has failed, causing the control to shut off the gas for safety.",
+        "typical_effect_on_operation": "The furnace or boiler ignites but then shuts off the gas within a few seconds, as the flame sensor does not register the flame. The system may attempt this ignition cycle multiple times before locking out, resulting in no sustained heat output.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Sensor rod is coated with carbon or oxidation, insulating it",
+          "Poor grounding or electrical connection to sensor circuit",
+          "Sensor cracked or otherwise failed"
+        ],
+        "canonical_symptoms": [
+          "Furnace lights then shuts off quickly (in 1-5 seconds)",
+          "Furnace might retry ignition several times then go into lockout",
+          "No heat with a blinking error code (often indicating 'flame failure')"
+        ],
+        "technician_observation_phrases": [
+          "very low flame rectification microamp signal",
+          "sensor covered in soot or corrosion"
+        ],
+        "notes": "The typical fix is cleaning the flame sensor with steel wool or fine sandpaper to restore good conductivity. If cleaning doesn’t help, or if the sensor’s ceramic is cracked, replacing the flame sensor is the next step.",
+        "evidence_snippets": [
+          "If the furnace flame sensor fails to detect flame, the burner will shut off after a few seconds:contentReference[oaicite:25]{index=25}, resulting in the furnace not staying lit."
+        ],
+        "source_ids": [
+          "ARS_FURNACE_IGNITE_2022"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.high_limit_switch_open_furnace_overheat",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Safety device",
+        "level_3_component": "Limit switch",
+        "general_diagnostic_name": "Safety fault",
+        "specific_diagnostic_name": "High limit switch open (furnace overheated)",
+        "system_types": [
+          "residential_furnace",
+          "commercial_rtu"
+        ],
+        "description": "The furnace’s high-temperature limit safety switch has tripped (opened) because the furnace overheated, typically due to lack of airflow. This cuts power to the burners to prevent damage or hazards.",
+        "typical_effect_on_operation": "The furnace burners will shut off prematurely, often after only a short burn, while the blower may continue to run (to cool the heat exchanger). Heating is intermittent or insufficient as the furnace cycles off on the limit.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Dirty air filter or blocked return causing reduced airflow",
+          "Blower motor failure or running below speed, so heat isn’t carried away",
+          "Closed/restricted supply vents or undersized duct causing heat buildup"
+        ],
+        "canonical_symptoms": [
+          "Furnace starts heating but stops after a couple of minutes, then possibly restarts and repeats",
+          "Rapid on/off cycling of the furnace (short heating cycles)",
+          "Furnace warm air is initially hot then turns cool as limit trips and blower keeps running"
+        ],
+        "technician_observation_phrases": [
+          "limit switch continuity open until furnace cools down",
+          "burners shutting off early, high plenum temperature measured"
+        ],
+        "notes": "Frequently caused by airflow issues – the first check is the filter and blower operation. The limit switch itself could weaken if it trips too often, so once the root cause is fixed, the switch may need replacement if it became overly sensitive or damaged.",
+        "evidence_snippets": [
+          "A dirty filter or other airflow issue can cause the furnace to overheat, tripping the high-limit switch and shutting the burner off to prevent damage:contentReference[oaicite:26]{index=26}."
+        ],
+        "source_ids": [
+          "ZONE_HVAC_COMMON_FAILURES_2023"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.furnace_pressure_switch_failed_or_tubing_blocked",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Safety device",
+        "level_3_component": "Pressure switch",
+        "general_diagnostic_name": "Safety fault",
+        "specific_diagnostic_name": "Furnace pressure switch failed or tubing blocked",
+        "system_types": [
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The pressure switch in the furnace, which ensures proper inducer operation and venting, is not closing as expected. This could be due to a malfunctioning switch, a blockage in the flue or condensate line, or the inducer not creating enough vacuum.",
+        "typical_effect_on_operation": "The furnace will not ignite because the control does not get the “all clear” signal from the pressure switch that the inducer is establishing draft. The inducer motor may run for a while then the furnace shuts down with an error. No heat is produced.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Blocked vent pipe or intake (leaves, debris, snow, etc.) preventing proper draft",
+          "Condensate from a high-efficiency furnace clogging the pressure switch tubing or drain",
+          "Pressure switch diaphragm failure or calibration drift (opening at wrong pressure)",
+          "Inducer fan issue (not running or running weakly, so insufficient pressure differential)"
+        ],
+        "canonical_symptoms": [
+          "Furnace goes into ignition sequence but shuts down, often with an error code (e.g., 2 or 3 flashes indicating pressure switch stuck open)",
+          "Gurgling sound in inducer (if condensate blockage) or no ignition flame ever established",
+          "System may retry multiple times then lock out until reset"
+        ],
+        "technician_observation_phrases": [
+          "blocked vent found – pressure switch would not close",
+          "inducer running but vacuum pressure low, switch not proving"
+        ],
+        "notes": "Common on high-efficiency furnaces if condensate backs up. Technicians will verify the flue is clear and test the pressure switch by jumpering briefly (for testing only) to see if furnace fires – which confirms a switch or vent issue. Never leave it jumped and always fix the underlying cause.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.condensate_overflow_float_switch_triggered",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Safety device",
+        "level_3_component": "Condensate switch",
+        "general_diagnostic_name": "Safety fault",
+        "specific_diagnostic_name": "Condensate overflow float switch triggered",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "ductless_mini_split",
+          "vrf_system",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "chiller_ahu_system"
+        ],
+        "description": "The safety float switch in the condensate drain pan or line has tripped due to high water level, indicating a clogged drain or pump failure. It has shut off the HVAC to prevent overflow.",
+        "typical_effect_on_operation": "The system (usually just the cooling mode) will stop operating. Often, the indoor blower and outdoor unit are halted to avoid producing more condensate. The thermostat may still call, but nothing runs, or some systems will show a specific fault indicator. No cooling (or dehumidification) occurs until the float resets.",
+        "severity": "low",
+        "common_root_causes": [
+          "Primary condensate drain line clogged with algae/debris, so water rises into overflow pan",
+          "Condensate pump failure (for units needing a pump) causing drain pan overflow",
+          "Improper slope on drain line causing standing water backup"
+        ],
+        "canonical_symptoms": [
+          "AC was cooling but then stopped; inspection shows water in emergency pan",
+          "Float switch device in pan is raised (tripped)",
+          "After clearing drain and resetting, system runs again"
+        ],
+        "technician_observation_phrases": [
+          "float switch open due to high water level",
+          "drain line clogged, vacuumed out algae"
+        ],
+        "notes": "This is a protective shutdown, not a failure of the HVAC equipment per se. Remedy is to clear the drain blockage and reset the switch (remove water). Regular maintenance (flushing drain lines, tablets in pan) helps prevent recurring issues.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.low_water_cutoff_engaged",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Safety device",
+        "level_3_component": "Water level",
+        "general_diagnostic_name": "Safety fault",
+        "specific_diagnostic_name": "Low-water cutoff engaged (boiler)",
+        "system_types": [
+          "boiler_hydronic"
+        ],
+        "description": "The boiler’s low-water cutoff switch has activated because the water level or pressure in the boiler dropped below a safe threshold. The burner is shut off to prevent dry firing.",
+        "typical_effect_on_operation": "The boiler will stop firing even if there is a heat call, and typically an alarm or indicator will show a low-water condition. No heat is generated until the water level is restored and the control is reset.",
+        "severity": "high",
+        "common_root_causes": [
+          "Water leak in system causing loss of volume",
+          "Faulty feed valve or makeup water supply off, so system water not being replenished",
+          "LWCO sensor failure (less common, giving false trip)",
+          "In steam boilers: failure of condensate return or pump, leading to low water in boiler"
+        ],
+        "canonical_symptoms": [
+          "Boiler not firing, with low-water error or light on control module",
+          "Boiler gauge glass (if steam system) shows low level",
+          "Radiators/baseboards not getting hot due to boiler staying off"
+        ],
+        "technician_observation_phrases": [
+          "manual low-water reset tripped",
+          "feed water inlet was shut causing boiler to drain down"
+        ],
+        "notes": "This is a crucial safety in boilers. The fix is to verify water is at proper level and resolve any leaks or feed issues, then reset the LWCO. In many systems, this requires manual intervention to ensure the cause of low water is addressed.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.igniter_or_pilot_failure",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Ignition/Combustion",
+        "level_3_component": "Ignition source",
+        "general_diagnostic_name": "Ignition failure",
+        "specific_diagnostic_name": "Igniter or pilot failure",
+        "system_types": [
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The furnace or boiler fails to ignite at all because the ignition source (hot surface igniter or pilot light) is not functioning (cracked, no spark, or pilot outage).",
+        "typical_effect_on_operation": "No heat will be produced. The system may go through ignition cycles (you might hear a click or see a spark or glow, then nothing). Eventually, it locks out (with an error code typically). Occupants get no heat and may smell unburned gas faintly if fuel flowed without ignition (most systems then purge it out).",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Hot surface igniter element cracked or burned out (open circuit)",
+          "Pilot burner clogged or flame sensor dirty (for standing pilot or spark ignition systems)",
+          "Ignition control module failure not sending spark or power to igniter",
+          "Gas valve not opening due to no verification of ignition"
+        ],
+        "canonical_symptoms": [
+          "No flame ever establishes in burner on call for heat",
+          "Igniter not glowing or no clicking heard for spark when it should",
+          "System locks out after retries, requiring reset"
+        ],
+        "technician_observation_phrases": [
+          "igniter resistance infinity (failed)",
+          "no spark observed at pilot hood",
+          "ignition control showing lockout code"
+        ],
+        "notes": "This is often a simple repair (replace igniter or clean pilot assembly). Ensure power is off when handling fragile hot surface igniters; oils from skin can cause premature failure. If a pilot flame is present but main burner doesn’t light, the issue could be elsewhere (gas valve, flame sensor) – so proper diagnosis is key.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.gas_valve_not_opening_or_gas_supply_off",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Ignition/Combustion",
+        "level_3_component": "Gas valve",
+        "general_diagnostic_name": "Ignition failure",
+        "specific_diagnostic_name": "Gas valve not opening or gas supply off",
+        "system_types": [
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "No gas is reaching the burners. This can occur if the gas supply is shut off or if the furnace’s gas valve fails to open when energized.",
+        "typical_effect_on_operation": "The furnace or boiler will not establish flame at all due to lack of fuel. The igniter will function and attempt ignition, but without gas no flame occurs and the system will shut down for safety (often after a few attempts, then lockout).",
+        "severity": "high",
+        "common_root_causes": [
+          "Manual gas shutoff valve closed (e.g., during maintenance and not reopened)",
+          "Gas supply interruption (utility issue or empty LP tank)",
+          "Gas valve coil failure or internal mechanical failure",
+          "Gas valve wiring not delivering proper voltage (control board issue)"
+        ],
+        "canonical_symptoms": [
+          "Igniter sparks or glows but no flame ever appears",
+          "No gas odor at all (for natural gas) indicating none is being released",
+          "System goes into ignition lockout due to failure to light"
+        ],
+        "technician_observation_phrases": [
+          "24V present at gas valve but valve not opening",
+          "gas cock found closed upstream of unit"
+        ],
+        "notes": "Rule out gas supply first – ensure manual valves and gas source are okay (could simply be utility shutoff or empty propane). If gas is available up to the valve but not coming out, replacing the valve is likely. On older systems with standing pilots, a pilot outage means main valve won’t open – re-lighting the pilot or fixing that system is the cure.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.dirty_or_clogged_burners",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Ignition/Combustion",
+        "level_3_component": "Burners",
+        "general_diagnostic_name": "Combustion problem",
+        "specific_diagnostic_name": "Dirty or clogged burners",
+        "system_types": [
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The furnace or boiler burners have accumulated dirt, rust, or soot, which impedes proper gas flow and combustion. The flames may burn poorly (yellow, lifting, or not fully across all burners).",
+        "typical_effect_on_operation": "Heating performance drops and the furnace/boiler may be prone to flame rollout or high CO production. Incomplete combustion wastes fuel. Burners may ignite unevenly or noisily. In extreme cases, flame sensing is erratic leading to outages.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Lack of regular maintenance (burners never cleaned)",
+          "Corrosion from moisture (esp. in off-season) causing rust flakes",
+          "Dust or lint buildup (particularly in older atmospheric burners)",
+          "Soot from prior combustion issues clogging port holes"
+        ],
+        "canonical_symptoms": [
+          "Flames are yellow or irregular instead of steady blue",
+          "Delayed ignition (gas builds up then lights with a 'whoosh') indicating dirty burners",
+          "Burner flame does not carry over smoothly across sections"
+        ],
+        "technician_observation_phrases": [
+          "found burners with significant rust scale",
+          "burner portholes partially blocked, cleaned to restore flame pattern"
+        ],
+        "notes": "Cleaning or replacing burners will solve most of these issues. It’s important for safety and efficiency. After cleaning, flame patterns and combustion should be tested (CO levels, etc.).",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.cracked_heat_exchanger",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Ignition/Combustion",
+        "level_3_component": "Heat exchanger",
+        "general_diagnostic_name": "Combustion problem",
+        "specific_diagnostic_name": "Cracked heat exchanger",
+        "system_types": [
+          "residential_furnace",
+          "commercial_rtu"
+        ],
+        "description": "The furnace’s heat exchanger has developed a crack or hole. This can allow combustion gases (including CO) to mix with indoor air, and often disrupts burner operation (as it introduces air into the flame).",
+        "typical_effect_on_operation": "Aside from the serious safety hazard (CO poisoning potential), a cracked heat exchanger may cause the furnace’s burners to flame roll-out or trigger the flame sensor erratically, leading to furnace shutdowns. Some furnaces have a pressure switch on the exchanger that will trip if a crack opens during operation.",
+        "severity": "high",
+        "common_root_causes": [
+          "Metal fatigue from years of heating/cooling expansion cycles (especially if furnace oversized and short cycles frequently)",
+          "Rust due to condensate (in high-efficiency furnaces, if drains are backed up)",
+          "Flame rollout or overheating events weakening the metal"
+        ],
+        "canonical_symptoms": [
+          "Strong fumes or odd odor when furnace runs",
+          "Burners exhibit abnormal flame patterns (flame disturbance) when blower comes on (a sign of air being sucked through crack)",
+          "CO detector in house alarming when furnace is on"
+        ],
+        "technician_observation_phrases": [
+          "heat exchanger visual inspection revealed crack",
+          "failed blower-induced draft test (flame wavers when blower starts)"
+        ],
+        "notes": "Any confirmed cracked heat exchanger requires furnace replacement or exchanger replacement if available. It’s an immediate safety shut-down. Technicians often use inspection cameras or specialized testers (like smoke or CO around the exchanger) to confirm cracks if not visible. Modern furnaces have safety cutouts, but not always reliable for crack detection.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.blocked_flue_or_chimney",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Ignition/Combustion",
+        "level_3_component": "Flue",
+        "general_diagnostic_name": "Combustion venting problem",
+        "specific_diagnostic_name": "Blocked flue or chimney",
+        "system_types": [
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The exhaust vent or chimney is obstructed, preventing combustion gases from properly venting out. This often triggers the furnace’s pressure switch or rollout sensors and can lead to dangerous buildup of exhaust indoors.",
+        "typical_effect_on_operation": "The furnace/boiler may start but then shut off as proper draft can’t be established (pressure switch stays open or flame rolls out). In some cases, spillage of flue gases can occur, which is a serious safety hazard (CO risk). The heating performance is halted by safety controls.",
+        "severity": "high",
+        "common_root_causes": [
+          "Birds nests or debris in flue pipe/chimney",
+          "Snow or ice blockage at roof termination",
+          "Collapsed masonry in chimney blocking passage",
+          "Vent damper stuck closed (on older systems with automatic dampers)"
+        ],
+        "canonical_symptoms": [
+          "Furnace starts then quickly shuts off (if pressure switch doesn’t close)",
+          "Burner flame is disturbed or rollout trips as exhaust backs up",
+          "Possible faint exhaust smell in furnace area (or CO detector alarm in worst case)"
+        ],
+        "technician_observation_phrases": [
+          "exhaust vent found obstructed",
+          "draft pressure not achieved on startup"
+        ],
+        "notes": "This is a critical issue to fix before operation. Clearing the blockage and verifying the chimney/vent is sound is necessary. All furnaces and boilers have specific venting requirements – any sign of blockage or poor draft should be addressed immediately.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.draft_inducer_motor_failure",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Ignition/Combustion",
+        "level_3_component": "Inducer",
+        "general_diagnostic_name": "Combustion venting problem",
+        "specific_diagnostic_name": "Draft inducer motor failure",
+        "system_types": [
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic"
+        ],
+        "description": "The furnace’s draft inducer fan (which pulls combustion air through the heat exchanger and vents it) is not running or not running properly. Without inducer operation, the pressure switch won’t close and the furnace won’t ignite (or will shut off).",
+        "typical_effect_on_operation": "On a call for heat, nothing beyond the inducer happens – the main burners never light because the proof of draft isn’t made. Often you’ll hear the inducer motor hum or try to start (or nothing if it’s completely dead), then the furnace stops and might retry. No heat is produced.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Inducer motor seized (bearings locked) or motor windings open/shorted",
+          "Inducer fan wheel jammed by debris or soot buildup",
+          "No power to inducer due to control board or relay issue",
+          "In high-efficiency units, a condensate backup can flood the inducer or block its flow"
+        ],
+        "canonical_symptoms": [
+          "Furnace never lights; error code indicates draft problem",
+          "Inducer motor is silent when it should run, or makes a loud humming but doesn’t spin",
+          "Pressure switch code or lockout after a few attempts"
+        ],
+        "technician_observation_phrases": [
+          "inducer motor drawing locked rotor amps, not turning",
+          "inducer wheel found broken/free-spinning on shaft"
+        ],
+        "notes": "Replacing the inducer assembly is the typical fix if the motor has failed. Check that the flue is clear and that no other cause (like water in the inducer housing from a clogged drain in a condensing furnace) is present, to avoid repeat failure.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.insufficient_combustion_air_flame_rollout",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Ignition/Combustion",
+        "level_3_component": "Combustion air",
+        "general_diagnostic_name": "Combustion venting problem",
+        "specific_diagnostic_name": "Insufficient combustion air (flame rollout)",
+        "system_types": [
+          "residential_furnace",
+          "boiler_hydronic"
+        ],
+        "description": "There is not enough fresh air for combustion, often due to a utility room being too airtight or vents being blocked. The flame ends up 'rolling out' of the burner area seeking oxygen, which can trip rollout switches.",
+        "typical_effect_on_operation": "The furnace or boiler may start but flames will extend beyond the burner box or behave lazily/yellow due to lack of oxygen. Rollout safety switches (if present) will trip, shutting down the burner. If not, soot production and CO levels rise. System will often lock out for safety.",
+        "severity": "high",
+        "common_root_causes": [
+          "Mechanical room sealed up (no combustion air intake louvers) after remodel",
+          "Another appliance depressurizing the space (exhaust fan, other furnace) and starving combustion air",
+          "Inlet air pipe (for direct-vent models) blocked or undersized"
+        ],
+        "canonical_symptoms": [
+          "Furnace/boiler shuts off on rollout switch or high limit frequently",
+          "Burn marks or soot around furnace front (signs of flame rollout)",
+          "Unusual rumbling flames audible, and flames visible outside normal area"
+        ],
+        "technician_observation_phrases": [
+          "combustion air louver size insufficient for BTU input",
+          "rollout switch repeatedly tripped due to flame rollout"
+        ],
+        "notes": "Ensuring adequate combustion air is a vital part of safe installation. Solutions may include adding combustion air vents or ducts, or in sealed combustion appliances, clearing the intake pipe. This is a hazard condition (potential for CO and fire) that must be corrected.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.electric_heat_strips_not_working",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Auxiliary/Electric Heat",
+        "level_3_component": "Electric heat",
+        "general_diagnostic_name": "Heating failure",
+        "specific_diagnostic_name": "Electric heat strips not working",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "ground_source_heat_pump"
+        ],
+        "description": "In an electric furnace or heat pump auxiliary heat, the electric resistance heating elements are not energizing when they should. This could be due to an open heating coil, a burnt out heating element, or control issue preventing their activation.",
+        "typical_effect_on_operation": "No heat or insufficient heat in conditions when only electric heat is available or needed (e.g., emergency heat mode or supplemental heat in very cold weather for a heat pump). The air coming out stays cool/lukewarm because the strips never heat up.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Burned out heating element (open circuit in the coil wire)",
+          "High temperature limit on electric heat tripped and not resetting (indicative of previous overheating)",
+          "Contactor/relay for heating strips failed open, so power never reaches elements",
+          "Incorrect wiring or configuration (aux heat locked out unintentionally)"
+        ],
+        "canonical_symptoms": [
+          "Heat pump struggles to maintain temperature and never engages aux, so indoor temp falls during very cold weather",
+          "In emergency heat mode, no warm air at all (just room temp air blowing)",
+          "No current draw on heat strip circuit when it should be on (amp clamp shows zero on those lines)"
+        ],
+        "technician_observation_phrases": [
+          "open circuit detected in heat element coil",
+          "heat sequencer or relay not closing to energize strips",
+          "voltage present to element but element not heating (sign of break in coil)"
+        ],
+        "notes": "If one of multiple heat strips fails, some heat will still come but less than expected. If none come on, the home can get quite cold as the heat pump alone may not suffice. Repair involves replacing the faulty elements or relays. Also ensure airflow is adequate and limits are in place, as heat strips can overheat quickly if blower fails.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.heat_pump_auxiliary_heat_stuck_on_or_off",
+        "level_1_category": "Sensor / Safety fault",
+        "level_2_subcategory": "Auxiliary/Emergency Heat",
+        "level_3_component": "Aux heat control",
+        "general_diagnostic_name": "Heating control issue",
+        "specific_diagnostic_name": "Heat pump auxiliary heat stuck on or off",
+        "system_types": [
+          "residential_heat_pump",
+          "commercial_rtu",
+          "residential_furnace",
+          "packaged_terminal_heat_pump",
+          "ground_source_heat_pump"
+        ],
+        "description": "The backup heating for a heat pump (electric strips or a furnace/boiler in dual-fuel systems) is not functioning correctly: either it runs continuously (even when not needed) or it never runs at all, even when the heat pump alone can't keep up.",
+        "typical_effect_on_operation": "If aux heat is stuck ON: the system may overshoot the setpoint or use excessive energy (and possibly blow hotter air than usual during what should be mild heating). If aux is stuck OFF: in cold weather the heat pump cannot maintain setpoint, and indoor temperature falls or the heat pump runs constantly without ever reaching setpoint.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Stuck sequencer or relay (contacts welded) causing strips to stay powered",
+          "Control board logic failure calling for aux heat at wrong times or not at all",
+          "Outdoor temperature sensor misreading (in systems that lock out aux above certain temp)",
+          "Dual-fuel system thermostat or fossil fuel kit misconfigured, not switching to furnace (or stuck on furnace)"
+        ],
+        "canonical_symptoms": [
+          "Very high electricity bills (aux heat running too much or continuously)",
+          "Heat pump runs constantly and home still cold (aux never engaging)",
+          "Indoor unit blows extremely warm air all the time (indicating strips on even in mild weather)",
+          "In dual fuel: heat pump and furnace might run simultaneously or furnace never runs when it should"
+        ],
+        "technician_observation_phrases": [
+          "aux heat energized during entire call even when not needed",
+          "aux heat not energizing even when indoor temp far from setpoint",
+          "thermostat balance point settings incorrect in dual fuel setup"
+        ],
+        "notes": "For ‘stuck on’ scenarios, check relays and sequencers first – many are mechanical and prone to sticking. For ‘never on’, verify the thermostat’s wiring/settings for aux heat and any outdoor lockout sensor. In dual fuel (heat pump with gas furnace), ensure the changeover to furnace mode is configured – sometimes an outdoor sensor or setup option is wrong, causing the furnace to never run or to run at incorrect times.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.system_undersized_for_load_or_extreme_weather",
+        "level_1_category": "Performance or design issue",
+        "level_2_subcategory": "System sizing",
+        "level_3_component": "Capacity",
+        "general_diagnostic_name": "Performance limitation",
+        "specific_diagnostic_name": "System undersized for load or extreme weather",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "boiler_hydronic",
+          "commercial_rtu",
+          "chiller_ahu_system",
+          "vrf_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "window_ac"
+        ],
+        "description": "The HVAC system’s capacity is too low for the space, or weather conditions exceed the design parameters, resulting in the system being unable to maintain setpoint.",
+        "typical_effect_on_operation": "During peak load conditions (very hot or cold days), the system runs continuously but cannot reach the thermostat setpoint. It may be fine in milder conditions but simply doesn’t have enough BTUs to handle extremes or a larger-than-designed load. No component is failing – the output is just not sufficient.",
+        "severity": "low",
+        "common_root_causes": [
+          "System installed with insufficient capacity (Manual J calculation underestimated load or was skipped)",
+          "Additional load added (new rooms, expansions, insulation removed, etc.) after system installation",
+          "Extreme weather beyond typical design (e.g., heat wave well above normal design temp, cold snap below heat pump balance point)",
+          "Unusually high internal gains or occupancy not accounted for in design"
+        ],
+        "canonical_symptoms": [
+          "HVAC runs 100% of the time on very hot/cold days and still can’t reach setpoint",
+          "Some rooms furthest from unit never get comfortable on extreme days",
+          "Temperature rises (or falls) inside beyond desired, despite system seemingly working normally"
+        ],
+        "technician_observation_phrases": [
+          "load calculation shows current system is undersized by X BTUs",
+          "unit running at full capacity, pressures/amps normal, but indoor temp still climbing on 100°F day"
+        ],
+        "notes": "Solutions might include adding capacity (additional or larger equipment), addressing insulation/air sealing to reduce load, or simply advising the user that the setpoint may not be achievable under rare extreme conditions. Modern smart thermostats sometimes alert when a system is running continuously without reaching setpoint, suggesting a possible sizing issue.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.system_oversized_short_cycles_high_humidity",
+        "level_1_category": "Performance or design issue",
+        "level_2_subcategory": "System sizing",
+        "level_3_component": "Capacity",
+        "general_diagnostic_name": "Performance limitation",
+        "specific_diagnostic_name": "System oversized (short cycles, high humidity)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "vrf_system",
+          "chiller_ahu_system"
+        ],
+        "description": "The HVAC system has more capacity than required for the space, causing it to satisfy the thermostat quickly and turn off before sufficiently dehumidifying or balancing temperatures. This leads to short run times and potentially clammy air.",
+        "typical_effect_on_operation": "The space cools or heats up very fast, so the system turns off after a short run (short cycling). In cooling mode, this means less moisture is removed, so relative humidity stays higher:contentReference[oaicite:96]{index=96}:contentReference[oaicite:97]{index=97}. Temperature may overshoot slightly or vary. Equipment may also wear faster due to frequent cycling.",
+        "severity": "low",
+        "common_root_causes": [
+          "System selected with too high BTU capacity for the load (Manual J overestimation or 'bigger is better' choice)",
+          "Previous smaller unit replaced by larger one in attempt to fix other issues",
+          "Multi-stage or modulating system not set up to de-stage, causing only high stage operation then off"
+        ],
+        "canonical_symptoms": [
+          "Very short cooling cycles (system might run just a few minutes and shut off)",
+          "Indoor humidity is high even though the place is cool (clammy feeling):contentReference[oaicite:98]{index=98}",
+          "Possible mold or moisture issues due to lack of sufficient drying",
+          "In heating, some rooms may overshoot or temperature swings noticeable due to bursty heat output"
+        ],
+        "technician_observation_phrases": [
+          "unit delivering too many CFM/BTUs for duct/space size",
+          "runtime per cycle measured extremely low, causing <50% runtime fraction even at design conditions"
+        ],
+        "notes": "Mitigation can include adding a whole-house dehumidifier, implementing controls to lower blower speed for longer runtimes, or ultimately replacing with a correctly sized unit. In some cases, an oversized multi-stage system can be tweaked to operate mostly on lower stage.",
+        "evidence_snippets": [
+          "High humidity is caused by short compressor run-time from oversized systems. The APR Control reduces capacity, extending runtime for effective dehumidification.:contentReference[oaicite:99]{index=99}"
+        ],
+        "source_ids": [
+          "RAWAL_DEVICES_DEHUMID_2019"
+        ]
+      },
+      {
+        "diagnostic_id": "dx.refrigerant_lines_kinked_or_wrong_size",
+        "level_1_category": "Performance or design issue",
+        "level_2_subcategory": "Installation issue",
+        "level_3_component": "Refrigerant piping",
+        "general_diagnostic_name": "Installation defect",
+        "specific_diagnostic_name": "Refrigerant lines kinked or wrong size",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "ductless_mini_split",
+          "vrf_system",
+          "ground_source_heat_pump"
+        ],
+        "description": "The refrigerant line-set has physical kinks or was installed with incorrect diameter piping. This impedes refrigerant flow and can alter system performance (oil return, pressure drops, etc.).",
+        "typical_effect_on_operation": "A kink acts like a restriction, causing pressure drop (similar to a partially clogged cap tube) – leading to low suction pressure and reduced capacity. Wrong pipe sizing (too small or too large) can cause improper oil return or reduced efficiency. The compressor may run hotter and capacity may suffer. In severe cases, compressor damage can occur from oil trapping or starving.",
+        "severity": "moderate",
+        "common_root_causes": [
+          "Line set bent too sharply during installation (kinking the copper)",
+          "Using existing line set of improper size when replacing unit (e.g., 5/8\" instead of 3/4\" required suction)",
+          "Excessively long line set without proper upsizing or traps, causing oil pooling",
+          "Multiple sharp elbows in piping causing equivalent length issues"
+        ],
+        "canonical_symptoms": [
+          "Lower cooling capacity; possible floodback or starvation depending on scenario",
+          "Unusual compressor noise (if oil not returning well or vapor flashing due to restriction)",
+          "Service pressures abnormal (e.g., low suction, higher superheat if starved)",
+          "If grossly undersized line: compressor overheating, high compression ratio"
+        ],
+        "technician_observation_phrases": [
+          "visible kink in suction line reducing diameter significantly",
+          "line set diameter does not match equipment specifications",
+          "oil accumulating in low spots due to improper piping practices"
+        ],
+        "notes": "If a kink is accessible, sometimes it can be cut out and the line re-spliced with couplings, or in minor cases carefully expanded back. Wrong line sizing might require line set replacement. Always adhere to manufacturer line length and sizing guidelines, especially for long runs and high lifts (may need oil traps or larger diameter).",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.outdoor_unit_damaged_coil_fins",
+        "level_1_category": "Performance or design issue",
+        "level_2_subcategory": "Physical damage",
+        "level_3_component": "Condenser coil",
+        "general_diagnostic_name": "Maintenance issue",
+        "specific_diagnostic_name": "Outdoor unit coil fins flattened/damaged",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "commercial_rtu",
+          "ductless_mini_split",
+          "vrf_system",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "window_ac",
+          "chiller_ahu_system"
+        ],
+        "description": "The aluminum fins on the outdoor condenser coil are flattened or damaged over a large area (e.g., hail damage or pressure washing damage), reducing heat transfer surface area and airflow through the coil.",
+        "typical_effect_on_operation": "Similar to a dirty coil, the condensing becomes less effective. Head pressures rise on hot days, efficiency drops, and capacity can be reduced. Compressor may run hotter and work harder, potentially shortening lifespan or causing high-pressure trips under extreme conditions.",
+        "severity": "low",
+        "common_root_causes": [
+          "Hail storm denting the fins across the coil",
+          "Improper cleaning technique (using high-pressure water or air against fins)",
+          "Vandalism or animal activity (urine from dogs can corrode lower fins, etc.)",
+          "Manufacturing defect (rare, usually damage is post-installation)"
+        ],
+        "canonical_symptoms": [
+          "Unit runs but struggles in heat – high discharge pressure noted",
+          "Physically obvious fin damage visible on inspection",
+          "Compressor amps higher than normal at a given condition (working harder due to reduced heat rejection)"
+        ],
+        "technician_observation_phrases": [
+          "condenser fins ~50% bent over in hail impact areas",
+          "fins combed out to improve airflow",
+          "large side of coil completely flattened"
+        ],
+        "notes": "Fin combs can partially restore bent fins if the damage isn’t too severe. In extreme cases, coil replacement might be needed. Hail guards can be installed to protect coils in hail-prone regions, though they must not impede normal airflow.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.thermostat_off_user_error",
+        "level_1_category": "No Fault / User Error",
+        "level_2_subcategory": "No fault",
+        "level_3_component": "User setting",
+        "general_diagnostic_name": "No actual fault",
+        "specific_diagnostic_name": "Thermostat turned off (user error)",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "boiler_hydronic",
+          "commercial_rtu",
+          "water_source_heat_pump",
+          "ground_source_heat_pump"
+        ],
+        "description": "There is no actual equipment fault; the HVAC system is not running because the thermostat (or controller) is turned off or set to a mode where it won't call for heating or cooling. Essentially, user or installer error is at play.",
+        "typical_effect_on_operation": "Obviously, the system remains off (no heating or cooling) despite any expectation of operation. Once the thermostat is turned on or set properly, the system functions normally. This is often discovered after a service call where no defects are found.",
+        "severity": "low",
+        "common_root_causes": [
+          "Thermostat left in OFF position (e.g., after season change or by accident)",
+          "New thermostat not configured, left in installer setup or in a hold state that effectively turns it off",
+          "User unfamiliar with thermostat schedule that might have an off period"
+        ],
+        "canonical_symptoms": [
+          "HVAC does not run at all – no matter temperature – because thermostat is off",
+          "Thermostat display might plainly show 'OFF' mode",
+          "Upon switching to cool or heat mode, system immediately engages and works"
+        ],
+        "technician_observation_phrases": [
+          "thermostat was in off position upon arrival",
+          "no call for heat/cool due to thermostat being off"
+        ],
+        "notes": "This is the simplest 'diagnosis' – no repair needed, just user education. It's surprisingly common, especially when transitioning seasons or after power outages (some thermostats default to off). We mark it as no-fault user error.",
+        "evidence_snippets": [],
+        "source_ids": []
+      },
+      {
+        "diagnostic_id": "dx.no_fault_system_normal_extreme_conditions",
+        "level_1_category": "No Fault / User Error",
+        "level_2_subcategory": "No fault",
+        "level_3_component": "System limitations",
+        "general_diagnostic_name": "No actual fault",
+        "specific_diagnostic_name": "System performing normally under extreme conditions",
+        "system_types": [
+          "residential_split_ac",
+          "residential_heat_pump",
+          "residential_furnace",
+          "commercial_rtu",
+          "boiler_hydronic",
+          "chiller_ahu_system",
+          "vrf_system",
+          "ductless_mini_split",
+          "packaged_terminal_ac",
+          "packaged_terminal_heat_pump",
+          "water_source_heat_pump",
+          "ground_source_heat_pump",
+          "window_ac"
+        ],
+        "description": "The system is functioning as designed, but due to extremely high or low outdoor temperatures (or other boundary conditions), it cannot maintain indoor comfort perfectly. In other words, there's no equipment fault – conditions are just beyond its capabilities or design assumptions.",
+        "typical_effect_on_operation": "Indoor temperatures might rise above the thermostat setting in a severe heat wave, or drop below setting in a cold snap, even though the HVAC is running constantly. Humidity might climb if AC can’t cycle enough, etc. Once weather moderates, the system keeps up fine. Essentially, it's a capacity limitation, not a failure.",
+        "severity": "low",
+        "common_root_causes": [
+          "Outdoor conditions exceed the equipment design parameters (e.g., heat pump at -10°F providing limited heat, or AC in 100°F+ struggling)",
+          "Home gained unusual heat load (e.g., party with many people, or open windows) not normally accounted for",
+          "User expects unrealistic performance (e.g., trying to cool house to 65°F when it's 105°F outside)"
+        ],
+        "canonical_symptoms": [
+          "System runs non-stop but indoor temp creeps beyond setpoint during peak hours",
+          "No error codes or obvious mechanical issues, just not meeting comfort on worst days",
+          "Building gradually loses ground overnight in extreme cold despite system operating"
+        ],
+        "technician_observation_phrases": [
+          "system pressures and amps normal for high load, just load exceeds capacity",
+          "informed homeowner that 75°F inside at 100°F ambient is actually expected performance"
+        ],
+        "notes": "This outcome often results in advice: e.g., add supplemental cooling/heating or improve insulation for extremes, but technically the HVAC is OK. Clarifying expectations and perhaps upsizing during replacement might be discussion points. Documentation of design conditions versus actual weather can support that system is normal.",
+        "evidence_snippets": [],
+        "source_ids": []
+      }
+    ]
+}
