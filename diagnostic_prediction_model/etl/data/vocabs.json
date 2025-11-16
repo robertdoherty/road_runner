@@ -94,36 +94,11 @@
     "unit_running_at_marginal_pressure": 91,
     "wires_melting": 92
   },
-  "family2id": {
-    "air_handler": 0,
-    "boiler": 1,
-    "chiller": 2,
-    "controls": 3,
-    "furnace": 4,
-    "heat_pump": 5,
-    "mini_split": 6,
-    "other": 7,
-    "rtu": 8,
-    "split_ac": 9,
-    "walk_in_freezer": 10
+  "system_type2id": {
+    "<unk_system_type>": 0
   },
   "subtype2id": {
-    "2_stage_high_efficiency_furnace": 0,
-    "80%_furnace": 1,
-    "<unk_subtype>": 2,
-    "air_cooled": 3,
-    "combi_boiler": 4,
-    "downflow_furnace": 5,
-    "ducted_system": 6,
-    "makeup_air_unit": 7,
-    "outdoor_condenser_units": 8,
-    "outdoor_unit": 9,
-    "pump": 10,
-    "r22_system": 11,
-    "rtu": 12,
-    "walk_in_freezer": 13,
-    "water_source_heat_pump": 14,
-    "zone_board": 15
+    "<unk_subtype>": 0
   },
   "brand2id": {
     "<unk_brand>": 0,

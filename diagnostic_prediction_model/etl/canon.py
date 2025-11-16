@@ -175,7 +175,7 @@ if __name__ == "__main__":
     print(f"  - Test: {stats['test']} samples")
     print(f"\n✓ Vocabulary sizes:")
     print(f"  - Symptoms: {stats['vocab_sizes']['symptoms']}")
-    print(f"  - Families: {stats['vocab_sizes']['families']}")
+    print(f"  - System Types: {stats['vocab_sizes']['system_types']}")
     print(f"  - Subtypes: {stats['vocab_sizes']['subtypes']}")
     print(f"  - Brands: {stats['vocab_sizes']['brands']}")
     print(f"  - Diagnostics: {stats['vocab_sizes']['diagnostics']}")

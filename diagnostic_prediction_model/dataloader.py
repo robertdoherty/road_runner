@@ -43,7 +43,7 @@ class HVACDataset(Dataset):
         ex = self.rows[i]; eq = ex["equip"]
         x = np.concatenate([
             self._multi_hot(ex["symptoms_canon"], self.v["symptom2id"]),
-            self._one_hot(eq.get("family","<unk_family>"),  self.v["family2id"],  "<unk_family>"),
+            self._one_hot(eq.get("system_type","<unk_system_type>"),  self.v["system_type2id"],  "<unk_system_type>"),
             self._one_hot(eq.get("subtype","<unk_subtype>"), self.v["subtype2id"], "<unk_subtype>"),
             self._one_hot(eq.get("brand","<unk_brand>"),     self.v["brand2id"],   "<unk_brand>")
         ], 0)
