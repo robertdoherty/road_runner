@@ -103,8 +103,8 @@ Glossary:
 - system_type: canonical HVAC system bucket (examples listed above)
 - asset_subtype: physical/config form (e.g., packaged RTU, ductless wall, cassette, horizontal)
 - brand: manufacturer token as written (Carrier, Trane, Goodman)
-- model_text: verbatim model strings from text (no normalization)
-- model_family_id: normalized brand+series (optional year bucket) ONLY if confident (e.g., carrier.48tc.2015_2022); else ""
+- model_text: raw manufacturer model number string(s) ONLY if clearly present (e.g., "ML193UH070XP36B-58", "RGPE-07EAMKR"). Must look like a factory model ID (letters/numbers, optional dashes/dots). 
+- model_family_id: normalized brand+series (optional broad year bucket) ONLY if  confident. Format: "brand.series" or "brand.series.2015_2022" (lowercase, dot-separated), e.g., "carrier.48tc", "daikin.air_cooled_chiller.2015_2022". If you only know brand+family, use an "unknown_*" suffix (e.g., "goodman.unknown_furnace"). If not confident, use "".
 
 Type rules (CRITICAL - must follow exactly):
 - Confidences are floats 0.0-1.0 (NOT strings, NOT null).
