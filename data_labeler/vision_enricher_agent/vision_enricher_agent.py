@@ -37,7 +37,7 @@ unsure. Do not invent facts.
 Tasks (if evidence is present):
 - Extract brand (manufacturer), exact model_text (as printed), and model_family_slug
   (normalized slug) only if confident (e.g., carrier.48tc.2015_2022).
-- Infer asset_family and subtype_form_factor from visual cues (nameplate, unit form).
+- Infer system_type (canonical list) and subtype_form_factor from visual cues (nameplate, unit form).
 - For split systems, read any indoor_model_id and outdoor_model_id if visible.
 - Identify visible_symptoms (e.g., burnt board, ice on coil, oil stain/leak, broken belt, tripped safety).
 
@@ -49,8 +49,10 @@ Output (STRICT JSON; use nulls when unsure; include confidences 0..1):
   "model_text_confidence": 0.0,
   "model_family_slug": "string|null",
   "model_family_slug_confidence": 0.0,
-  "asset_family": "rtu|split_ac|heat_pump|mini_split|furnace|air_handler|boiler|chiller|cooling_tower|controls|other|null",
-  "asset_family_confidence": 0.0,
+  # "system_type" options should be dynamically loaded for consistency.
+  # Example (runtime value): "system_type": "<|>".join(SYSTEM_TYPE_CHOICES) + "|null",
+  "system_type": "{system_type_choices}|null",
+  "system_type_confidence": 0.0,
   "subtype_form_factor": "string|null",
   "subtype_form_factor_confidence": 0.0,
   "indoor_model_id": "string|null",
@@ -106,11 +108,13 @@ def safe_parse_json(text_or_obj: Any) -> Dict[str, Any]:
 
 
 def _problem_diagnosis_from_labels(labels: Dict[str, Any]) -> str:
-    asset = labels.get("asset_family")
-    symptoms = labels.get("symptoms") or []
+    system_info = labels.get("system_info", {}) if isinstance(labels, dict) else {}
+    error_report = labels.get("error_report", {}) if isinstance(labels, dict) else {}
+    system_type = system_info.get("system_type")
+    symptoms = error_report.get("symptoms") or []
     parts: List[str] = []
-    if asset:
-        parts.append(f"asset_family={asset}")
+    if system_type:
+        parts.append(f"system_type={system_type}")
     if symptoms:
         parts.append("symptoms=[" + ", ".join(str(s) for s in symptoms if s) + "]")
     return "; ".join(parts) if parts else "unknown"

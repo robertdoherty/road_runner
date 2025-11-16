@@ -96,8 +96,8 @@ def _format_hms(seconds: float) -> str:
 def _extract_equipment(labels: Dict[str, Any]) -> Dict[str, str]:
     system_info = labels.get("system_info", {}) if isinstance(labels, dict) else {}
     return {
-        "family": system_info.get("asset_family", "") or "",
-        "subtype": system_info.get("asset_subtype", "") or "",
+        "system_type": system_info.get("system_type", "") or "",
+        "system_subtype": system_info.get("system_subtype", "") or "",
         "brand": system_info.get("brand", "") or "",
     }
 

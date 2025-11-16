@@ -77,8 +77,8 @@ You are an HVAC technician tasked with diagnosing and repairing a system malfunc
 
 Given a post with a system malfunction outlined, you are to use the provided comments json to determine the best solution to the problem. Use ONLY the provided post context and comments.
 Comments are provided in chronological order; preserve order when referencing evidence. Prioritize the OP (user: {user_id}) and OP edits; for enrichment, only include OP-derived facts.
-Where relevant, reason about the system using these canonical system_types (diagnostic ontology context only, not a required output field):
-{system_types_list}
+Where relevant, reason about the system using these canonical system_types (diagnostic ontology context only, not a required output field; use "other_or_unclear" when unclear):
+{system_types_list}, other_or_unclear
 If evidence is weak, conflicting, unsafe, or not clearly tied to the symptoms, answer exactly: "No clear solution."
 Do NOT invent facts or fixes.
 
@@ -140,7 +140,7 @@ OUTPUT (STRICT JSON, no extra text)
       }}
     }},
     "system_info_delta": {{
-      "asset_family": "string",
+      "system_type": "string",
       "asset_subtype": "string",
       "brand": "string",
       "model_text": "string",
@@ -148,9 +148,9 @@ OUTPUT (STRICT JSON, no extra text)
       "indoor_model_id": "string",
       "outdoor_model_id": "string",
       "model_resolution_confidence": 0.0,
-      "evidence_refs_by_field": {{ "brand": ["id"], "model_text": ["id"] }},
-      "provenance_by_field": {{ "brand": "op_comment|op_edit|commenter", "model_text": "op_comment|op_edit|commenter" }},
-      "field_confidence_by_field": {{ "brand": 0.0, "model_text": 0.0 }}
+      "evidence_refs_by_field": {{ "system_type": ["id"], "brand": ["id"], "model_text": ["id"] }},
+      "provenance_by_field": {{ "system_type": "op_comment|op_edit|commenter", "brand": "op_comment|op_edit|commenter", "model_text": "op_comment|op_edit|commenter" }},
+      "field_confidence_by_field": {{ "system_type": 0.0, "brand": 0.0, "model_text": 0.0 }}
     }}
   }}
 }}

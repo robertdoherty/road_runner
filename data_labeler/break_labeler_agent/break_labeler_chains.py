@@ -1,7 +1,7 @@
 # data_labeler_agent/break_labeler_chains.py
 """
 Break Labeler Chain: Classifies Reddit posts as BREAK/NON_BREAK and extracts
-structured HVAC malfunction details (asset_family, brand, model, symptoms, etc.).
+structured HVAC malfunction details (system_type, brand, model, symptoms, etc.).
 """
 
 import os
@@ -93,14 +93,14 @@ NON_BREAK examples:
 
 Fields available per post: title, body, score, num_comments, upvote_ratio, media(if present).
 
-Canonical system_types (from the diagnostic ontology, for context only):
-{system_types_list}
+Canonical system_types (choose one per post; use "other_or_unclear" if unknown):
+{system_types_list}, other_or_unclear
 
 Glossary:
 - break_label: "BREAK" or "NON_BREAK" classification
 - symptoms: array of symptom strings describing the malfunction
 - error_codes: controller codes/tokens (E5, 33, LPS)
-- asset_family: rtu | split_ac | heat_pump | mini_split | furnace | air_handler | boiler | chiller | cooling_tower | controls | tools | other | "" (empty string for unknown)
+- system_type: canonical HVAC system bucket (examples listed above)
 - asset_subtype: physical/config form (e.g., packaged RTU, ductless wall, cassette, horizontal)
 - brand: manufacturer token as written (Carrier, Trane, Goodman)
 - model_text: verbatim model strings from text (no normalization)
@@ -115,7 +115,7 @@ Type rules (CRITICAL - must follow exactly):
 - Strings => "" when unknown (NOT null).
 - Booleans => true/false (NOT null).
 - break_label: MUST be exactly "BREAK" or "NON_BREAK"
-- asset_family: MUST be one of the allowed values OR empty string ""
+- system_type: MUST be one of the allowed values (including "other_or_unclear")
 - All confidence fields MUST be present with float values 0.0-1.0
 
 Output (one object per input post):
@@ -132,8 +132,8 @@ Output (one object per input post):
         "error_codes_confidence": 0.0
       }},
       "system_info": {{
-        "asset_family": "",
-        "asset_family_confidence": 0.0,
+        "system_type": "",
+        "system_type_confidence": 0.0,
         "asset_subtype": "",
         "asset_subtype_confidence": 0.0,
         "brand": "",

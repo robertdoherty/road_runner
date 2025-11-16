@@ -202,7 +202,7 @@ def _merge_system_info_delta(labels: Dict[str, Any], delta: Dict[str, Any]) -> N
     conf_by = delta.get("field_confidence_by_field") or {}
 
     string_fields = [
-        "asset_family",
+        "system_type",
         "asset_subtype",
         "brand",
         "model_text",
@@ -303,10 +303,10 @@ def run_solutions_on_enriched(
             labels = _ensure_nested(labels)
             rec["labels"] = labels
             symptoms = labels.get("error_report", {}).get("symptoms", [])
-            asset_family = labels.get("system_info", {}).get("asset_family")
+            system_type = labels.get("system_info", {}).get("system_type")
             problem_diagnosis = (
-                f"asset_family={asset_family}; symptoms={symptoms}"
-                if asset_family or symptoms
+                f"system_type={system_type}; symptoms={symptoms}"
+                if system_type or symptoms
                 else "unknown"
             )
 

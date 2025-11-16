@@ -32,10 +32,10 @@ def canonicalize_equip(equip: dict) -> dict:
     """Canonicalize equipment fields similar to symptoms (lowercase, underscores).
 
     Args:
-        equip: Dict possibly containing 'family', 'subtype', 'brand'.
+        equip: Dict possibly containing 'system_type', 'subtype', 'brand'.
 
     Returns:
-        Dict with canonicalized string values for 'family', 'subtype', 'brand'.
+        Dict with canonicalized string values for 'system_type', 'subtype', 'brand'.
     """
     def norm(value: str) -> str:
         if not isinstance(value, str):
@@ -49,8 +49,9 @@ def canonicalize_equip(equip: dict) -> dict:
         return token
 
     return {
-        "family": norm(equip.get("family", "")),
-        "subtype": norm(equip.get("subtype", "")),
+        "system_type": norm(equip.get("system_type", "")),
+        # For training, treat system_subtype as the canonical subtype source.
+        "subtype": norm(equip.get("system_subtype", "")),
         "brand": norm(equip.get("brand", "")),
     }
 
@@ -79,7 +80,7 @@ def build_training_data(path_to_json: str) -> dict:
     data_dir.mkdir(exist_ok=True)
     
     # Generate empty sets and training jsonl
-    symptom_set, family_set, subtype_set, brand_set, diag_set = set(), set(), set(), set(), set()
+    symptom_set, system_type_set, subtype_set, brand_set, diag_set = set(), set(), set(), set(), set()
     out_files = {
         "train": open(data_dir / "train.jsonl","w"),
         "val":   open(data_dir / "val.jsonl","w"),
@@ -94,8 +95,8 @@ def build_training_data(path_to_json: str) -> dict:
         # Canonicalize equipment and WRITE BACK so JSONL has canonical values
         equip_canon = canonicalize_equip(issue.get('equip', {}))
         issue['equip'] = equip_canon
-        if equip_canon['family']:
-            family_set.add(equip_canon['family'])
+        if equip_canon['system_type']:
+            system_type_set.add(equip_canon['system_type'])
         if equip_canon['subtype']:
             subtype_set.add(equip_canon['subtype'])
         if equip_canon['brand']:
@@ -121,10 +122,11 @@ def build_training_data(path_to_json: str) -> dict:
     # Ensure unknown tokens exist for sparse fields
     subtype_set.add("<unk_subtype>")
     brand_set.add("<unk_brand>")
+    system_type_set.add("<unk_system_type>")
 
     vocabs = {
         "symptom2id": to_idx_map(symptom_set),
-        "family2id":  to_idx_map(family_set),
+        "system_type2id":  to_idx_map(system_type_set),
         "subtype2id": to_idx_map(subtype_set),
         "brand2id":   to_idx_map(brand_set),
         "diag2id":    to_idx_map(diag_set),
@@ -141,7 +143,7 @@ def build_training_data(path_to_json: str) -> dict:
         "test": sum(1 for issue in diagnostic_dataset if issue['split'] == 'test'),
         "vocab_sizes": {
             "symptoms": len(symptom_set),
-            "families": len(family_set),
+            "system_types": len(system_type_set),
             "subtypes": len(subtype_set),
             "brands": len(brand_set),
             "diagnostics": len(diag_set)

@@ -75,7 +75,7 @@ def extract_post_fields(solutions_json_path: str) -> List[Dict[str, Any]]:
         - ``symptoms`` (List[str])
         - ``title`` (str)
         - ``body`` (str)
-        - ``equip`` (dict with ``family``, ``subtype``, ``brand``)
+        - ``equip`` (dict with ``system_type``, ``system_subtype``, ``brand``)
     """
 
     with open(solutions_json_path, "r", encoding="utf-8") as f:
@@ -95,8 +95,8 @@ def extract_post_fields(solutions_json_path: str) -> List[Dict[str, Any]]:
         body: str = post_blob.get("body", "") or ""
 
         equip: Dict[str, Any] = {
-            "family": system_info.get("asset_family", ""),
-            "subtype": system_info.get("asset_subtype", ""),
+            "system_type": system_info.get("system_type", ""),
+            "system_subtype": system_info.get("system_subtype", "") or system_info.get("asset_subtype", ""),
             "brand": system_info.get("brand", ""),
         }
 
@@ -192,11 +192,12 @@ def map_label(x_symptoms: str, equip: dict, rules: dict) -> tuple[str, float, li
         if not rule_equip:
             return True
         post_equip = post_equip or {}
-        for key in ("family", "subtype", "brand"):
+        for key in ("system_type", "subtype", "brand"):
             allowed = rule_equip.get(key)
             if allowed is None:
                 continue
-            post_val = post_equip.get(key, "")
+            post_key = "system_subtype" if key == "subtype" else key
+            post_val = post_equip.get(post_key, "")
             if not post_val:
                 return False
             if post_val not in _to_list(allowed):
@@ -258,7 +259,7 @@ def make_error_prediction_row(
     Args:
         post_id: Post identifier.
         x_symptoms: Normalized symptom text.
-        equip: Equipment fields with ``family``, ``subtype``, ``brand``.
+        equip: Equipment fields with ``system_type``, ``system_subtype``, ``brand``.
         label_id: Diagnostic label id to assign.
         sample_weight: Weight in ``[0.5, 1.0]``; will be clamped.
         ontology: Ontology/version string for labels.
@@ -276,7 +277,7 @@ def make_error_prediction_row(
         "post_id": post_id,
         "x_symptoms": x_symptoms,
         "equip": {
-            "family": equip.get("family",""),
+            "system_type": equip.get("system_type",""),
             "subtype": equip.get("subtype",""),
             "brand":  equip.get("brand",""),
         },
@@ -319,7 +320,7 @@ def update_golden_examples(
         label_id: Label bucket to add the example under.
         post_id: Post identifier.
         text: Example text to store.
-        equip: Equipment fields with ``family``, ``subtype``, ``brand``.
+        equip: Equipment fields with ``system_type``, ``system_subtype``, ``brand``.
         fired_rules: Rule ids that matched for this example.
         cap_per_label: Maximum examples to retain per label.
 
@@ -338,7 +339,7 @@ def update_golden_examples(
         bucket.append({
             "post_id": post_id,
             "text": text,
-            "equip": {k: equip.get(k,"") for k in ("family","subtype","brand")},
+            "equip": {k: equip.get(k,"") for k in ("system_type","subtype","brand")},
             "hits": unique_hits,
         })
 
