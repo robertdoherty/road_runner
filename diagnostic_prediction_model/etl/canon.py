@@ -89,6 +89,7 @@ def build_training_data(path_to_json: str) -> dict:
         "test":  open(data_dir / "test.jsonl","w"),
     }
     ## Go through all issues and add to sets
+    filtered_count = 0
     for issue in diagnostic_dataset:
         # Canonicalize symptoms
         issue['symptoms_canon'] = canonicalize_fields(issue.get('x_symptoms', ''))
@@ -110,6 +111,12 @@ def build_training_data(path_to_json: str) -> dict:
             diag_label = issue['y_diag'][0][0]
         except Exception:
             diag_label = None
+        
+        # Filter out unclear diagnostics
+        if diag_label == "dx.other_or_unclear":
+            filtered_count += 1
+            continue
+        
         if diag_label:
             diag_set.add(diag_label)
 
@@ -138,11 +145,17 @@ def build_training_data(path_to_json: str) -> dict:
     json.dump(vocabs, open(data_dir / "vocabs.json","w"), indent=2)
     
     # Return statistics for reporting
+    train_count = sum(1 for issue in diagnostic_dataset if issue.get('split') == 'train')
+    val_count = sum(1 for issue in diagnostic_dataset if issue.get('split') == 'val')
+    test_count = sum(1 for issue in diagnostic_dataset if issue.get('split') == 'test')
+    
     return {
         "total": len(diagnostic_dataset),
-        "train": sum(1 for issue in diagnostic_dataset if issue['split'] == 'train'),
-        "val": sum(1 for issue in diagnostic_dataset if issue['split'] == 'val'),
-        "test": sum(1 for issue in diagnostic_dataset if issue['split'] == 'test'),
+        "filtered": filtered_count,
+        "used": train_count + val_count + test_count,
+        "train": train_count,
+        "val": val_count,
+        "test": test_count,
         "vocab_sizes": {
             "symptoms": len(symptom_set),
             "system_types": len(system_type_set),
@@ -169,10 +182,12 @@ if __name__ == "__main__":
     print(f"Building training data from: {input_file}\n")
     stats = build_training_data(str(input_file))
     
-    print(f"✓ Created training data from {stats['total']} samples")
-    print(f"  - Train: {stats['train']} samples")
-    print(f"  - Val: {stats['val']} samples")
-    print(f"  - Test: {stats['test']} samples")
+    print(f"✓ Created training data from {stats['total']} total samples")
+    print(f"  - Filtered out: {stats['filtered']} (dx.other_or_unclear)")
+    print(f"  - Used: {stats['used']} samples")
+    print(f"    • Train: {stats['train']} samples")
+    print(f"    • Val: {stats['val']} samples")
+    print(f"    • Test: {stats['test']} samples")
     print(f"\n✓ Vocabulary sizes:")
     print(f"  - Symptoms: {stats['vocab_sizes']['symptoms']}")
     print(f"  - System Types: {stats['vocab_sizes']['system_types']}")
