@@ -53,6 +53,8 @@ def canonicalize_equip(equip: dict) -> dict:
         # For training, treat system_subtype as the canonical subtype source.
         "subtype": norm(equip.get("system_subtype", "")),
         "brand": norm(equip.get("brand", "")),
+        "model_family_id": norm(equip.get("model_family_id", "")),
+        "model_text": norm(equip.get("model_text", "")),
     }
 
 

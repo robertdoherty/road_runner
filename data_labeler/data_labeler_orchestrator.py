@@ -99,6 +99,8 @@ def _extract_equipment(labels: Dict[str, Any]) -> Dict[str, str]:
         "system_type": system_info.get("system_type", "") or "",
         "system_subtype": system_info.get("system_subtype", "") or "",
         "brand": system_info.get("brand", "") or "",
+        "model_family_id": system_info.get("model_family_id", "") or "",
+        "model_text": system_info.get("model_text", "") or "",
     }
 
 
